@@ -1,0 +1,12 @@
+.DropzoneField {
+}
+
+.DropzoneField__inputContainer {
+  border-radius: 24px;
+  overflow: hidden;
+  min-height: 56px;
+  min-width: 56px;
+  height: 100%;
+  width: 100%;
+  @apply bg-gray-100 outline-none border border-action-focus;
+}

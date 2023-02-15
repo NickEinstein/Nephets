@@ -1,0 +1,6 @@
+.ProtectedPageHeader {
+}
+
+.ProtectedPageHeader.MuiAppBar-colorDefault {
+  @apply bg-white text-black;
+}
