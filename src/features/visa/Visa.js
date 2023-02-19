@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const Visa = () => {
   return (
     <div>
-      <Header />
+      <Header underlined = 'visa' />
 
       <div className=" h-[260] w-100 p-5 text-[11px] px-[10%]">
         <Typography className="my-16 text-center" variant="h4">

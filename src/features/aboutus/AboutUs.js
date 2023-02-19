@@ -37,7 +37,7 @@ function AboutUs() {
           //     backgroundRepeat: "no-repeat",
           //   }}
         >
-          <Header />
+          <Header underlined="about" />
           <div className="h-[260px] ">
             <img src={AboutImage} />
           </div>

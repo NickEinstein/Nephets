@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const Visa = () => {
   return (
     <div className=" h-[260] w-100text-[11px] ">
-      <Header />
+      <Header underlined="coaching" />
       <div
         className="h-screen "
         style={{
@@ -34,54 +34,45 @@ const Visa = () => {
             {/* <img className="w-full h-full" src={VisaImage} /> */}
           </div>
           <div className="w-full text-[11px] ">
+            <Typography variant="h4" className="mb-6">
+              What is IELTS
+            </Typography>
             <Typography>
-              Lorem ipsum dolor sit amet consectetur. Dolor sit odio sit
-              sagittis morbi senectus amet at. Ut in gravida arcu semper.
-              Ultrices amet justo tellus diam sed nunc ipsum pellentesque ut.
-              Cras venenatis elementum proin in ut mi integer est. Facilisi
-              felis mi mattis sed tortor. Id euismod neque id tempor sed
-              maecenas purus mattis. Venenatis senectus ipsum et suspendisse
-              urna sapien vel facilisis tellus. Etiam nulla nisi odio molestie
-              malesuada. Ornare ac est sapien diam nullam commodo aliquet. Dui
-              quis nisl fermentum velit aliquam ultricies id amet. Nisl sed nunc
-              vestibulum maecenas rhoncus sociis non molestie. Est eget in non
-              consequat mi ornare phasellus.
+              The International English Language Testing System (IELTS) is an
+              exam that is been done on a weekly or bi-weekly basis across
+              different countries. Which is designed to help you work, study or
+              migrate to a country where English is the native language. This
+              includes countries such as Australia, Canada, New Zealand, the UK
+              and the USA. This exam tests your ability, fluency and proficiency
+              to listen, read, write and speak in English will be assessed
+              during the test. IELTS is graded on a scale of 1-9.
             </Typography>
           </div>
         </div>
+
+        <Typography variant="h4">Why IELTS</Typography>
         <Typography>
-          Lorem ipsum dolor sit amet consectetur. Dolor sit odio sit sagittis
-          morbi senectus amet at. Ut in gravida arcu semper. Ultrices amet justo
-          tellus diam sed nunc ipsum pellentesque ut. Cras venenatis elementum
-          proin in ut mi integer est. Facilisi felis mi mattis sed tortor. Id
-          euismod neque id tempor sed maecenas purus mattis. Venenatis senectus
-          ipsum et suspendisse urna sapien vel facilisis tellus. Etiam nulla
-          nisi odio molestie malesuada. Ornare ac est sapien diam nullam commodo
-          aliquet. Dui quis nisl fermentum velit aliquam ultricies id amet. Nisl
-          sed nunc vestibulum maecenas rhoncus sociis non molestie. Est eget in
-          non consequat mi ornare phasellus.
+          If you intend to live, school or work in an English-speaking country,
+          it is necessary to enroll and write the IELTS exams, especially for
+          immigration purposes. In recent times we have seen the reduction of
+          IELTS exanimation been a major requirement to entering an
+          English-speaking country, especially in the area of schooling prior to
+          the fact that the host or applicant country is an English-speaking
+          country.
         </Typography>
         <div>
           <div className="my-12">
-            <Typography variant="h6">Visa Types</Typography>
+            <Typography variant="h6">Requirements Needed</Typography>
             <Typography>
               {" "}
               <Typography>
-                Lorem ipsum dolor sit amet consectetur. Dolor sit odio sit
-                sagittis morbi senectus amet at. Ut in gravida arcu semper.
-                Ultrices amet justo tellus diam sed nunc ipsum pellentesque ut.
-                Cras venenatis elementum proin in ut mi integer est. Facilisi
-                felis mi mattis sed tortor. Id euismod neque id tempor sed
-                maecenas purus mattis. Venenatis senectus ipsum et suspendisse
-                urna sapien vel facilisis tellus. Etiam nulla nisi odio molestie
-                malesuada. Ornare ac est sapien diam nullam commodo aliquet. Dui
-                quis nisl fermentum velit aliquam ultricies id amet. Nisl sed
-                nunc vestibulum maecenas rhoncus sociis non molestie. Est eget
-                in non consequat mi ornare phasellus.
+                To be qualified to write the IELTS examination, you must have a
+                valid passport from your country of residence, or which has at
+                least six months before it expires.
               </Typography>
             </Typography>
           </div>
-          <div className="my-12">
+          {/* <div className="my-12">
             <Typography variant="h6">Requirements/Countries</Typography>
             <Typography>
               {" "}
@@ -99,28 +90,22 @@ const Visa = () => {
                 in non consequat mi ornare phasellus.
               </Typography>
             </Typography>
-          </div>
+          </div> */}
           <div className="my-12">
             <Typography variant="h6">How To Apply</Typography>
             <Typography>
               {" "}
               <Typography>
-                Lorem ipsum dolor sit amet consectetur. Dolor sit odio sit
-                sagittis morbi senectus amet at. Ut in gravida arcu semper.
-                Ultrices amet justo tellus diam sed nunc ipsum pellentesque ut.
-                Cras venenatis elementum proin in ut mi integer est. Facilisi
-                felis mi mattis sed tortor. Id euismod neque id tempor sed
-                maecenas purus mattis. Venenatis senectus ipsum et suspendisse
-                urna sapien vel facilisis tellus. Etiam nulla nisi odio molestie
-                malesuada. Ornare ac est sapien diam nullam commodo aliquet. Dui
-                quis nisl fermentum velit aliquam ultricies id amet. Nisl sed
-                nunc vestibulum maecenas rhoncus sociis non molestie. Est eget
-                in non consequat mi ornare phasellus.
+                To apply for the IELTS examination, you will have to provide the
+                necessary information, book a convenient date and time, attach
+                your passport, and proceed to make payment for the exams.
               </Typography>
             </Typography>
           </div>
           <div className="flex justify-end">
-            <Link to='/personal-info'><Button>Book Now</Button></Link>
+            <Link to="/coaching-form">
+              <Button>Book Now</Button>
+            </Link>
           </div>
         </div>
       </div>

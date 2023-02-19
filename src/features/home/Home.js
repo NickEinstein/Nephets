@@ -73,7 +73,7 @@ function Home() {
             backgroundRepeat: "no-repeat",
           }}
         >
-          <Header />
+          <Header underlined="home" />
 
           <div className="px-[10%] ">
             <div className="my-32 w-2/5 text-white ">

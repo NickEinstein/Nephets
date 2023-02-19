@@ -4,6 +4,7 @@ export const RouteEnum = {
   ABOUT_US: "/about-us",
   COACHING: "/coaching",
   PERSONALINFO: "/personal-info",
+  COACHINGFORM:'/coaching-form',
 
   LOGIN: "/login",
   SIGNUP: "/signup",

@@ -37,6 +37,10 @@ const ROUTES = configureRoutes([
     path: RouteEnum.PERSONALINFO,
     element: lazy(() => import("features/personalInfo/PersonalInfo")),
   },
+  {
+    path: RouteEnum.COACHINGFORM,
+    element: lazy(() => import("features/coaching/CoachingForm")),
+  },
 
   // {
   //   path: RouteEnum.SIGNUPCLIENT,
