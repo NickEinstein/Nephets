@@ -4,8 +4,9 @@ export const RouteEnum = {
   ABOUT_US: "/about-us",
   COACHING: "/coaching",
   PERSONALINFO: "/personal-info",
-  COACHINGFORM:'/coaching-form',
-
+  COACHINGFORM: "/coaching-form",
+  TEMPORALVISA: "/temporal-visa",
+  PERMANENTVISA: "/permanent-visa",
   LOGIN: "/login",
   SIGNUP: "/signup",
   SIGNUP_VERIFICATION_REQUEST: "/signup/verification-request",

@@ -11,25 +11,9 @@ import {
   Icon,
   Button,
 } from "@mui/material";
-import LinkButton from "common/LinkButton";
-import PublicPageHeader from "common/PublicPageHeader";
-import company1 from "assets/imgs/company1.png";
-import company2 from "assets/imgs/company2.png";
-import company3 from "assets/imgs/company3.jpeg";
-import webDesign from "assets/imgs/popular-services-webdesign.png";
-import mobileDev from "assets/imgs/popular-services-mobiledev.png";
-import accounting from "assets/imgs/popular-services-accounting.png";
-import clientImage from "assets/imgs/home-clients-image.png";
-import freelancer from "assets/imgs/home-freelancer-image.png";
-import headerImage from "assets/imgs/home-header-image.png";
-import HomeLillianJpeg from "assets/imgs/home-lillian.jpeg";
-import LadyInBlackImage from "assets/imgs/home-lady-in-black.png";
-import ManInBlackImage from "assets/imgs/home-man-in-black.png";
-import WomanInRedImage from "assets/imgs/home-woman-in-red-image.png";
-import ManInDreadsImage from "assets/imgs/home-boy-with-dreads.png";
-import dataEntry from "assets/imgs/popular-services-dataEntry.png";
-import PageFooter from "common/PageFooter";
-import clsx from "clsx";
+import home1Image from "../../assets/nehpets/NehpetsHome.jpg";
+import home2Image from "../../assets/nehpets/NehpetsHome2.jpg";
+import home3Image from "../../assets/nehpets/NehpetsHome3.jpg";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -61,6 +45,47 @@ import { Link } from "react-router-dom";
 
 
 function Home() {
+   const configs = [
+     {
+       bgColor: "HomeTopSectionBackgroundColor_WomanInRedImage",
+       textColor: "text-secondary-main",
+       image: home1Image,
+     },
+     {
+       bgColor: "HomeTopSectionBackgroundColor_ManInDreadsImage",
+       textColor: "text-white",
+       image: home2Image,
+     },
+     {
+       bgColor: "HomeTopSectionBackgroundColor_headerImage",
+       textColor: "text-secondary-main",
+       image: home3Image,
+     },
+     {
+       bgColor: "HomeTopSectionBackgroundColor_headerImage",
+       textColor: "text-secondary-main",
+       image: backgroundImage,
+     },
+   ];
+
+   const stepper = useStepper({ maxStep: configs.length - 1 });
+
+   const config = configs[stepper.step];
+
+   const dataRef = useDataRef({ stepper });
+
+   useEffect(() => {
+     const intervalId = setInterval(() => {
+       if (dataRef.current.stepper.canNextStep()) {
+         dataRef.current.stepper.nextStep();
+       } else {
+         dataRef.current.stepper.reset();
+       }
+     }, 1000 * 10);
+     return () => {
+       clearInterval(intervalId);
+     };
+   }, [dataRef]);
   
   return (
     <>
@@ -68,11 +93,25 @@ function Home() {
         <div
           className="h-screen "
           style={{
-            background: `url('${backgroundImage}')`,
+            background: `url('${configs[stepper.step].image}')`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
           }}
         >
+          {/* <div className="self-stretch w-1/2 hidden md:flex items-end">
+            <div className="relative w-full" style={{ height: 620 }}>
+              {configs.map((step, index) => (
+                <Fade
+                  key={index}
+                  in={stepper.step === index}
+                  timeout={500}
+                  className="absolute block top-0 w-full h-full "
+                >
+                  <img alt={index} src={step.image} />
+                </Fade>
+              ))}
+            </div>
+          </div> */}
           <Header underlined="home" />
 
           <div className="px-[10%] ">
@@ -93,8 +132,16 @@ function Home() {
         <div class="relative">
           <div class="w-full absolute -top-[70px]">
             <div class="flex justify-around">
-              <LinkCard text="Apply For Visa" cardImage={cardImage} />
-              <LinkCard text="Start a Course" cardImage={cardImage2} />
+              <LinkCard
+                to="/visa"
+                text="Apply For Visa"
+                cardImage={cardImage}
+              />
+              <LinkCard
+                to="/coaching"
+                text="Start a Course"
+                cardImage={cardImage2}
+              />
             </div>
           </div>
         </div>

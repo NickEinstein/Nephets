@@ -1,25 +1,88 @@
 import logo from "../../assets/nehpets/Nehpets logo 1.svg";
 import cardImage from "../../assets/nehpets/LinkCard_one.svg";
-import { Button, Typography } from "@mui/material";
+import { Button, Divider, Typography } from "@mui/material";
 import VisaImage from "../../assets/nehpets/NephetsStudentsPic.svg";
+import VisaImage1 from "../../assets/nehpets/Coaching1.jpg";
+import VisaImage2 from "../../assets/nehpets/Coaching2.jpg";
+import VisaImage3 from "../../assets/nehpets/Coaching3.jpg";
 import backgroundImage from "../../assets/nehpets/NephetsCoachingBg.svg";
 import Header from "features/header/header";
 import { Link } from "react-router-dom";
+import useStepper from "hooks/useStepper";
+import useDataRef from "hooks/useDataRef";
+import { useEffect } from "react";
 
-const Visa = () => {
+const Coaching = () => {
+   const configs = [
+    //  {
+    //    bgColor: "HomeTopSectionBackgroundColor_WomanInRedImage",
+    //    textColor: "text-secondary-main",
+    //    image: VisaImage1,
+    //  },
+     {
+       bgColor: "HomeTopSectionBackgroundColor_ManInDreadsImage",
+       textColor: "text-white",
+       image: VisaImage2,
+     },
+     {
+       bgColor: "HomeTopSectionBackgroundColor_headerImage",
+       textColor: "text-secondary-main",
+       image: VisaImage3,
+     },
+     {
+       bgColor: "HomeTopSectionBackgroundColor_headerImage",
+       textColor: "text-secondary-main",
+       image: backgroundImage,
+     },
+   ];
+
+   const stepper = useStepper({ maxStep: configs.length - 1 });
+
+   const config = configs[stepper.step];
+
+   const dataRef = useDataRef({ stepper });
+
+   useEffect(() => {
+     const intervalId = setInterval(() => {
+       if (dataRef.current.stepper.canNextStep()) {
+         dataRef.current.stepper.nextStep();
+       } else {
+         dataRef.current.stepper.reset();
+       }
+     }, 1000 * 10);
+     return () => {
+       clearInterval(intervalId);
+     };
+   }, [dataRef]);
+  
   return (
-    <div className=" h-[260] w-100text-[11px] ">
+    <div className="pb-16  ">
       <Header underlined="coaching" />
       <div
-        className="h-screen "
+        className="h-screen relative"
         style={{
-          background: `url('${backgroundImage}')`,
+          background: `url('${configs[stepper.step].image}')`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
-      ></div>
+      >
+        <div style={{display:configs.length - 1==stepper.step && 'none'}} className="absolute  w-full">
+          <div className=" w-full px-[10%] py-[20%]  justify-between font-extrabold text-primary-main ">
+            <Typography className="font-extrabold" variant="h2">
+              IELTS CRASH  COURSE
+            </Typography>
+            {/* <Divider /> */}
+            <Typography className="mt-4 mb-4 text-white " variant="h2">
+             NEHPETS CONSULTING
+            </Typography>
+            {/* <Link to="/personal-info">
+              <Button>Book Now</Button>
+            </Link> */}
+          </div>
+        </div>
+      </div>
       <div className="px-[10%]">
-        <Typography className="my-16 text-center" variant="h4">
+        <Typography className="my-16 text-center font-semibold" variant="h4">
           What You Should Know Before Your Journey Starts
         </Typography>
         <div className="flex items-start gap-2 mb-4">
@@ -33,8 +96,8 @@ const Visa = () => {
           >
             {/* <img className="w-full h-full" src={VisaImage} /> */}
           </div>
-          <div className="w-full text-[11px] ">
-            <Typography variant="h4" className="mb-6">
+          <div className="w-full  ">
+            <Typography variant="h4" className="mb-6 font-bold">
               What is IELTS
             </Typography>
             <Typography>
@@ -50,7 +113,7 @@ const Visa = () => {
           </div>
         </div>
 
-        <Typography variant="h4">Why IELTS</Typography>
+        <Typography variant="h4" className="font-bold">Why IELTS</Typography>
         <Typography>
           If you intend to live, school or work in an English-speaking country,
           it is necessary to enroll and write the IELTS exams, especially for
@@ -62,7 +125,7 @@ const Visa = () => {
         </Typography>
         <div>
           <div className="my-12">
-            <Typography variant="h6">Requirements Needed</Typography>
+            <Typography variant="h6" className="font-bold">Requirements Needed</Typography>
             <Typography>
               {" "}
               <Typography>
@@ -92,7 +155,7 @@ const Visa = () => {
             </Typography>
           </div> */}
           <div className="my-12">
-            <Typography variant="h6">How To Apply</Typography>
+            <Typography variant="h6" className="font-bold">How To Apply</Typography>
             <Typography>
               {" "}
               <Typography>
@@ -112,4 +175,4 @@ const Visa = () => {
     </div>
   );
 };
-export default Visa;
+export default Coaching;

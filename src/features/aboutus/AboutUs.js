@@ -15,7 +15,9 @@ import LinkButton from "common/LinkButton";
 import Header from "features/header/header";
 import backgroundImage from "../../assets/nehpets/HomePage_backgroundImage.svg";
 import LinkCard from "features/home/Links";
-import yellowBallImage from "../../assets/nehpets/yellowBall.svg";
+import home1Image from "../../assets/nehpets/NehpetsHome.jpg";
+import home2Image from "../../assets/nehpets/NehpetsHome2.jpg";
+import home3Image from "../../assets/nehpets/NehpetsHome3.jpg";
 import yellowBallSmallImage from "../../assets/nehpets/yellowSmall.svg";
 import ashBallImage from "../../assets/nehpets/ashBall.svg";
 import maroonBallImage from "../../assets/nehpets/maroonBall.svg";
@@ -24,8 +26,49 @@ import chinesesgirlsImage from "../../assets/nehpets/HomePage_Section2.svg";
 import africanChildred from "../../assets/nehpets/HomePage_Section2_2.svg";
 import cardImage from "../../assets/nehpets/LinkCard_one.svg";
 import AboutImage from "../../assets/nehpets/AboutUsImage.svg";
+import useStepper from "hooks/useStepper";
+import { useEffect, useRef } from "react";
+import useDataRef from "hooks/useDataRef";
 
 function AboutUs() {
+   const configs = [
+     {
+       bgColor: "HomeTopSectionBackgroundColor_WomanInRedImage",
+       textColor: "text-secondary-main",
+       image: home1Image,
+     },
+     {
+       bgColor: "HomeTopSectionBackgroundColor_ManInDreadsImage",
+       textColor: "text-white",
+       image: home2Image,
+     },
+     {
+       bgColor: "HomeTopSectionBackgroundColor_headerImage",
+       textColor: "text-secondary-main",
+       image: home3Image,
+     },
+    
+   ];
+
+
+   const stepper = useStepper({ maxStep: configs.length - 1 });
+
+   const config = configs[stepper.step];
+
+   const dataRef = useDataRef({ stepper });
+
+   useEffect(() => {
+     const intervalId = setInterval(() => {
+       if (dataRef.current.stepper.canNextStep()) {
+         dataRef.current.stepper.nextStep();
+       } else {
+         dataRef.current.stepper.reset();
+       }
+     }, 1000 * 10);
+     return () => {
+       clearInterval(intervalId);
+     };
+   }, [dataRef]);
   return (
     <>
       <div className="">
@@ -41,6 +84,8 @@ function AboutUs() {
           <div className="h-[260px] ">
             <img src={AboutImage} />
           </div>
+
+         
 
           <div class="w-full flex justify-center ">
             <div className="text-center py-8 px-10 w-3/5 border bg-white rounded-lg">

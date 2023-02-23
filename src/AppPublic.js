@@ -41,6 +41,14 @@ const ROUTES = configureRoutes([
     path: RouteEnum.COACHINGFORM,
     element: lazy(() => import("features/coaching/CoachingForm")),
   },
+  {
+    path: RouteEnum.TEMPORALVISA,
+    element: lazy(() => import("features/visa/TemporalResident")),
+  },
+  {
+    path: RouteEnum.PERMANENTVISA,
+    element: lazy(() => import("features/visa/PermanentResident")),
+  },
 
   // {
   //   path: RouteEnum.SIGNUPCLIENT,
