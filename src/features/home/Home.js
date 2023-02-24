@@ -12,7 +12,7 @@ import {
   Button,
 } from "@mui/material";
 import home1Image from "../../assets/nehpets/NehpetsHome.jpg";
-import home2Image from "../../assets/nehpets/NehpetsHome2.jpg";
+import home2Image from "../../assets/nehpets/Tourist.jpg";
 import home3Image from "../../assets/nehpets/NehpetsHome3.jpg";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Carousel from "react-multi-carousel";
@@ -81,7 +81,7 @@ function Home() {
        } else {
          dataRef.current.stepper.reset();
        }
-     }, 1000 * 10);
+     }, 1000 * 5);
      return () => {
        clearInterval(intervalId);
      };
@@ -112,7 +112,7 @@ function Home() {
               ))}
             </div>
           </div> */}
-          <Header underlined="home" />
+          <Header step={stepper.step} underlined="home" />
 
           <div className="px-[10%] ">
             <div className="my-32 w-2/5 text-white ">

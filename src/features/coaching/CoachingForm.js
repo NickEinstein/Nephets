@@ -24,6 +24,8 @@ const CoachingForm = () => {
       passport: "Drivers licence",
       terms: "yes",
     };
+
+    
     const res = await post({
       endpoint: `customers`,
       body: { ...createCustomer },
