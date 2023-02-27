@@ -2,7 +2,7 @@ import logo from "../../assets/nehpets/Nehpets logo 1.svg";
 import cardImage from "../../assets/nehpets/LinkCard_one.svg";
 import { Button, Typography } from "@mui/material";
 import VisaImage from "../../assets/nehpets/VisaImage.svg";
-import VisaImage2 from "../../assets/nehpets/Visa.jpg";
+import VisaImage2 from "../../assets/nehpets/BabyToReplaceVisa.jpg";
 import Header from "features/header/header";
 import { Link } from "react-router-dom";
 
@@ -15,8 +15,8 @@ const Visa = () => {
         <Typography className="my-16 text-center font-extrabold" variant="h4">
           Have You Asked The "WHY QUESTION?"
         </Typography>
-        <div className="flex items-start h-[200px] gap-4 mb-4">
-          <div className=" h-[200px] w-3/5">
+        <div className="flex items-start gap-4 mb-4">
+          <div className=" w-[600px] h-[250px]">
             <img className="w-full h-full" src={VisaImage2} />
           </div>
           <div className="w-full  border-3">

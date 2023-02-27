@@ -35,7 +35,7 @@ import ashBallImage from "../../assets/nehpets/ashBall.svg";
 import maroonBallImage from "../../assets/nehpets/maroonBall.svg";
 import ashBallSmallImage from "../../assets/nehpets/ashballsmall.svg";
 import chinesesgirlsImage from "../../assets/nehpets/HomePage_Section2.svg";
-import africanChildred from "../../assets/nehpets/HomePage_Section2_2.svg";
+import africanChildred from "../../assets/nehpets/HomePageChildrenReplacement.jpg";
 import HomeUsersCard from "./HomeUsersCard";
 import cardImage from "../../assets/nehpets/LinkCard_one.svg";
 import cardImage2 from "../../assets/nehpets/LinkCard_two.svg";
@@ -120,7 +120,7 @@ function Home() {
                 Immigration & Visa Consultant Agent
               </Typography>
               <Typography className="mt-8 mb-4 text-white " variant="h5">
-                Lorem ipsum dolor sit amet leo eros consectetur.
+                Planning together to achieve your dream
               </Typography>
               <Link to="/personal-info">
                 <Button>Book Now</Button>
@@ -135,11 +135,13 @@ function Home() {
               <LinkCard
                 to="/visa"
                 text="Apply For Visa"
+                text2="Let's assist you"
                 cardImage={cardImage}
               />
               <LinkCard
                 to="/coaching"
                 text="Start a Course"
+                text2="Register for IELTS"
                 cardImage={cardImage2}
               />
             </div>
@@ -152,23 +154,23 @@ function Home() {
             src={ashBallImage}
           />
 
-          <div className="relative w-100  px-[23%] flex mt-52">
+          <div className="relative w-100  px-[23%] pl-[12%] flex mt-20">
             <div className="relative w-full  ">
-              <img class="w-[160px] " src={africanChildred} />
+              <img class="w-[260px] h-[230px] z-20 absolute left-0" src={africanChildred} />
               <img
-                class="w-40 absolute top-[100px] left-[115px]"
+                class="absolute w-[260px] h-[260px] top-[100px] left-[215px]"
                 src={chinesesgirlsImage}
               />
               <img
-                class="w-12 absolute top-[30px] left-[170px]"
+                class="w-12 absolute top-[30px] left-[300px]"
                 src={yellowBallImage}
               />
               <img
-                class="w-20 absolute top-[130px] -z-10 -left-5"
+                class="w-20 absolute top-[190px] -z-10 -left-6"
                 src={yellowBallImage}
               />
               <div
-                class="w-24 h-24 rounded-full text-white flex flex-col items-center justify-center absolute text-[11px] top-[220px] z-10 left-[220px] bg-[#AB0035]"
+                class="w-24 h-24 rounded-full text-white flex flex-col items-center justify-center absolute text-[11px] top-[250px] z-10 left-[220px] bg-[#AB0035]"
                 // src={maroonBallImage}
               >
                 <Typography className="">200+</Typography>

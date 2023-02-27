@@ -1,7 +1,7 @@
 import logo from "../../assets/nehpets/Nehpets logo 1.svg";
 import cardImage from "../../assets/nehpets/LinkCard_one.svg";
 import { Button, Divider, Typography } from "@mui/material";
-import VisaImage from "../../assets/nehpets/NephetsStudentsPic.svg";
+import VisaImage from "../../assets/nehpets/PictureForVisa.jpg";
 import VisaImage1 from "../../assets/nehpets/Coaching1.jpg";
 import VisaImage2 from "../../assets/nehpets/Coaching2.jpg";
 import VisaImage3 from "../../assets/nehpets/Coaching3.jpg";
@@ -49,7 +49,7 @@ const Coaching = () => {
        } else {
          dataRef.current.stepper.reset();
        }
-     }, 1000 * 10);
+     }, 1000 * 5);
      return () => {
        clearInterval(intervalId);
      };
@@ -72,9 +72,9 @@ const Coaching = () => {
               IELTS CRASH  COURSE
             </Typography>
             {/* <Divider /> */}
-            <Typography className="mt-4 mb-4 text-white " variant="h2">
+            {/* <Typography className="mt-4 mb-4 text-white " variant="h2">
              NEHPETS CONSULTING
-            </Typography>
+            </Typography> */}
             {/* <Link to="/personal-info">
               <Button>Book Now</Button>
             </Link> */}
@@ -86,16 +86,16 @@ const Coaching = () => {
           What You Should Know Before Your Journey Starts
         </Typography>
         <div className="flex items-start gap-2 mb-4">
-          <div
+          {/* <div
             style={{
               background: `url('${VisaImage}')`,
               backgroundSize: "auto",
               backgroundRepeat: "no-repeat",
             }}
             className="w-[800px] min-h-[280px] "
-          >
-            {/* <img className="w-full h-full" src={VisaImage} /> */}
-          </div>
+          > */}
+            <img className="w-[350px] h-full" src={VisaImage} />
+          {/* </div> */}
           <div className="w-full  ">
             <Typography variant="h4" className="mb-6 font-bold">
               What is IELTS
