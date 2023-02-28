@@ -85,14 +85,12 @@ function AboutUs() {
             <img src={AboutImage} />
           </div>
 
-         
-
           <div class="w-full flex justify-center ">
             <div className="text-center py-8 px-10 w-3/5 border bg-white rounded-lg">
               <Typography className="my-6 font-bold" variant="h4">
                 What We Do
               </Typography>
-              <Typography>
+              <Typography className="text-base">
                 Nehpets Consulting prepares their clients for IELTS. This online
                 preparation comes with IELTS Materials and a study pack.
                 Tutorial sessions, sample tests, one on one interactions and

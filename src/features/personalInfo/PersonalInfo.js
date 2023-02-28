@@ -55,7 +55,7 @@ const HomeUsersCard = () => {
     const add = async ()=>{
       
  const res = await post({
-   endpoint: `customers`,
+   endpoint: `form`,
    body: { ...formdata },
    auth: false,
  });

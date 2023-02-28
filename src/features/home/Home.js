@@ -156,7 +156,10 @@ function Home() {
 
           <div className="relative w-100  px-[23%] pl-[12%] flex mt-20">
             <div className="relative w-full  ">
-              <img class="w-[260px] h-[230px] z-20 absolute left-0" src={africanChildred} />
+              <img
+                class="w-[260px] h-[230px] z-20 absolute left-0"
+                src={africanChildred}
+              />
               <img
                 class="absolute w-[260px] h-[260px] top-[100px] left-[215px]"
                 src={chinesesgirlsImage}
@@ -184,23 +187,26 @@ function Home() {
                 />
                 <img class="w-40" src={yellowBallSmallImage} /> */}
             </div>
-            <div className="relative w-[360px] text-[11px]">
-              <img className="w-48" src={ashBallImage} />
+            <div className="relative w-[550px]">
+              <img className="w-60" src={ashBallImage} />
               <div className="absolute -top-5 left-[50px] ">
                 <Typography
-                  className="my-3 text-xs font-extrabold"
+                  className="my-3 w-full font-extrabold text-center"
                   variant="h6"
                 >
                   Get coached by experienced tutors
                 </Typography>
-                <Typography className="my3 font-semibold" variant="">
+                <Typography className="my3 font-semibold text-base" variant="">
                   We’ve been coaching and registering students for IELTS exams
                   for educational opportunities in foreign countries
                 </Typography>
               </div>
-              <div className="absolute bottom-5 left-[50px]">
+              <Link
+                to="/coaching-form"
+                className="absolute bottom-5 left-[50px]"
+              >
                 <Button className="w-32">Enroll </Button>
-              </div>
+              </Link>
             </div>
           </div>
         </div>

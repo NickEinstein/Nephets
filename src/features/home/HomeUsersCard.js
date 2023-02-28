@@ -23,7 +23,7 @@ const HomeUsersCard = () => {
             <Typography className="text-center" variant="h6">
               Loveth
             </Typography>
-            <Typography variant="">
+            <Typography variant="" className="text-base">
               {" "}
               I register for the IELTS tutorial for the 2022 diet, the classes
               were very insightful, with lots of materials, videos, individual
@@ -45,7 +45,7 @@ const HomeUsersCard = () => {
           </div>
           <div className=" mt-7 text-center">
             <Typography variant="h6">Lawrence</Typography>
-            <Typography variant="">
+            <Typography variant="" className="text-base">
               {" "}
               In 2022 I was recommended to try this service, and the journey
               thus far has been awesome, I enroll in the IELTS session, and I
@@ -65,7 +65,7 @@ const HomeUsersCard = () => {
           </div>
           <div className=" mt-7 text-center">
             <Typography variant="h6">Emmanuel</Typography>
-            <Typography variant="">
+            <Typography variant="" className="text-base">
               {" "}
               Nehpets Consulting has shown what it meant to be a consulting
               firm. Through this platform, I was able to secure admission to

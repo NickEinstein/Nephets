@@ -11,16 +11,16 @@ const Visa = () => {
     <div>
       <Header underlined="visa" />
 
-      <div className=" h-[260] w-100 p-5  px-[15%]">
+      <div className=" h-[260] w-100 p-5  px-[15%] ">
         <Typography className="my-16 text-center font-extrabold" variant="h4">
           Have You Asked The "WHY QUESTION?"
         </Typography>
         <div className="flex items-start gap-4 mb-4">
-          <div className=" w-[600px] h-[250px]">
+          <div className=" w-[600px] h-[350px]">
             <img className="w-full h-full" src={VisaImage2} />
           </div>
-          <div className="w-full  border-3">
-            <Typography>
+          <div className="w-full  border-3 text-base">
+            <Typography className="text-base">
               Travelling or leaving your country is a very important step that
               needs proper evaluation before embarking on. There are basic
               questions you should ask yourself, I call it the evaluation phase.
@@ -37,7 +37,7 @@ const Visa = () => {
             </Typography>
           </div>
         </div>
-        <Typography className="">
+        <Typography className="text-base">
           Before your start your joining or travelling to a country, either for
           schooling, visiting, tourist or immigration purposes you should ask
           yourself this question.
@@ -62,18 +62,24 @@ const Visa = () => {
             </Typography>
             <Typography>
               {" "}
-              <Typography>
+              <Typography className="text-base">
                 There are different types of visas depending on what you are
                 applying for. This Visas can be classified into Temporary and
                 Permanent Visas. For more information click below
               </Typography>
-              <ul className="flex-col flex gap-3 mt-3 px-20 font-bold list-disc">
-                <Link to='/temporal-visa' className="hover:text-primary-main hover:cursor-pointer">
+              <ul className="flex-col flex gap-3 mt-3 px-20 font-bold list-disc text-base">
+                <Link
+                  to="/temporal-visa"
+                  className="hover:text-primary-main hover:cursor-pointer"
+                >
                   Temporary Residence
-                </Link >
-                <Link to='/permanent-visa' className="hover:text-primary-main hover:cursor-pointer">
+                </Link>
+                <Link
+                  to="/permanent-visa"
+                  className="hover:text-primary-main hover:cursor-pointer"
+                >
                   Permanent Residence{" "}
-                </Link >
+                </Link>
               </ul>
             </Typography>
           </div>
@@ -83,7 +89,7 @@ const Visa = () => {
             </Typography>
             <Typography>
               {" "}
-              <Typography>
+              <Typography className="text-base">
                 Visa requirement varies in different countries, prior to the
                 evaluation, assessment and validation of the application
                 process.

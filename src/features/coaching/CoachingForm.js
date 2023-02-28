@@ -5,30 +5,48 @@ import userAvatarImage from "../../assets/nehpets/HomeUser_Avartar.svg";
 import { Box } from "@mui/system";
 import { post } from "services/fetch";
 import Header from "features/header/header";
+import { useState } from "react";
 
 const CoachingForm = () => {
-  const add = async () => {
-    let createCustomer = {
-      firstName: "Daniel",
-      lastName: "Ntoe",
-      mobileNumber: "08105334020",
-      age: "40",
-      maritalStatus: "Single",
-      email: "danino@g.com",
-      nationality: "nigeria",
-      address: "lagos",
-      country: "nigeria",
-      doYouHaveChildren: "no",
-      listAllMembers: "yemi, john",
-      job: "Software",
-      passport: "Drivers licence",
-      terms: "yes",
-    };
+  const [formdata, setFormdata] = useState({
+    firstName: " ",
+    lastName: " ",
+    phoneNumber: " ",
+    email: " ",
+    address: " ",
+    purpose: " ",
+    ieltsReg: " ",
+    ieltsExamDate: " ",
+    tutorial: " ",
+    studyMaterials: " ",
+    consultation: " ",
+    examinationLocation: " ",
+  });
 
+   const onChange = (e) => {
+     // console.log(e?.target?.value);
+     // console.log(e);
+     // console.log(name);
+
+     console.log(e.target.value);
+     console.log(e.target.value);
+     setFormdata({
+       ...formdata,
+       [e.target.name]: e.target.value,
+     });
+   };
+
+
+  const add = async () => {
+    // let createCustomer = {
+     
+    // };
+
+     
     
     const res = await post({
-      endpoint: `customers`,
-      body: { ...createCustomer },
+      endpoint: `book`,
+      body: { ...formdata },
       auth: false,
     });
   };
@@ -42,7 +60,7 @@ const CoachingForm = () => {
             className="pt-8  text-center  text-bold text-black"
             variant="h3"
           >
-            Enrollment Form
+            IELTS Enrollment Form
           </Typography>
           <Typography className="pb-8 text-center  text-bold text-black">
             This will help us send you updates and recomendations.
@@ -56,51 +74,67 @@ const CoachingForm = () => {
             noValidate
             autoComplete="off"
           >
+            {/* : " ", : " ", : " ", : " ", : " ", : " ", : " ", : " ", tutorial: "
+            ", studyMaterials: " ", consultation: " ", : " ", */}
             <div class="flex gap-6">
               <TextField
                 id="outlined-basic"
                 label="First Name"
+                onChange={onChange}
                 variant="outlined"
                 className="w-full"
+                name="firstName"
               />
               <TextField
                 id="outlined-basic"
                 label="Last Name"
+                onChange={onChange}
                 variant="outlined"
                 className="w-full"
+                name="lastName"
               />
             </div>
             <div class="flex gap-6">
               <TextField
                 className="w-full"
                 id="outlined-basic"
-                label="Age"
+                label="Phone Number (WhatsApp)"
+                name="phoneNumber"
+                onChange={onChange}
                 variant="outlined"
               />
               <TextField
                 className="w-full"
                 id="outlined-basic"
-                label="Phone Number (WhatsApp)"
+                label="Email"
+                onChange={onChange}
                 variant="outlined"
+                name="email"
               />
             </div>
             <TextField
               className="w-full"
               id="outlined-basic"
               label=" Address "
+                onChange={onChange}
               variant="outlined"
+              name="address"
             />
             <div class="flex gap-6">
               <TextField
                 className="w-full"
                 id="outlined-basic"
-                label="Nationality (Country Of Birth)"
+                label="IELTS EXAM DATE"
+                name="ieltsExamDate"
+                onChange={onChange}
                 variant="outlined"
               />
               <TextField
                 className="w-full"
                 id="outlined-basic"
-                label="Country Of Residence"
+                label="IELTS REGISTRATION"
+                name="ieltsReg"
+                onChange={onChange}
                 variant="outlined"
               />
             </div>
@@ -110,9 +144,9 @@ const CoachingForm = () => {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                //   value={age}
+                  //   value={age}
                   label="Purpose"
-                //   onChange={handleChange}
+                  //   onChange={handleChange}
                 >
                   <MenuItem value={10}>IELTS Registration</MenuItem>
                   <MenuItem value={20}>
@@ -125,10 +159,11 @@ const CoachingForm = () => {
                 className="w-full"
                 id="outlined-basic"
                 label="Examination Location"
+                onChange={onChange}
                 variant="outlined"
+                name="examinationLocation"
               />
             </div>
-           
             <Button onClick={add} className="h-10">
               Submit Form
             </Button>

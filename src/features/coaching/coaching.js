@@ -66,10 +66,13 @@ const Coaching = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div style={{display:configs.length - 1==stepper.step && 'none'}} className="absolute  w-full">
-          <div className=" w-full px-[10%] py-[20%]  justify-between font-extrabold text-primary-main ">
+        <div
+          style={{ display: configs.length - 1 == stepper.step && "none" }}
+          className="absolute  w-full"
+        >
+          <div className=" w-full px-[10%] py-[20%]  justify-between font-extrabold text-primary-main text-base">
             <Typography className="font-extrabold" variant="h2">
-              IELTS CRASH  COURSE
+              IELTS CRASH COURSE
             </Typography>
             {/* <Divider /> */}
             {/* <Typography className="mt-4 mb-4 text-white " variant="h2">
@@ -94,13 +97,13 @@ const Coaching = () => {
             }}
             className="w-[800px] min-h-[280px] "
           > */}
-            <img className="w-[350px] h-full" src={VisaImage} />
+          <img className="w-[350px] h-full" src={VisaImage} />
           {/* </div> */}
           <div className="w-full  ">
             <Typography variant="h4" className="mb-6 font-bold">
               What is IELTS
             </Typography>
-            <Typography>
+            <Typography className="text-base">
               The International English Language Testing System (IELTS) is an
               exam that is been done on a weekly or bi-weekly basis across
               different countries. Which is designed to help you work, study or
@@ -113,8 +116,10 @@ const Coaching = () => {
           </div>
         </div>
 
-        <Typography variant="h4" className="font-bold">Why IELTS</Typography>
-        <Typography>
+        <Typography variant="h4" className="font-bold">
+          Why IELTS
+        </Typography>
+        <Typography className="text-base">
           If you intend to live, school or work in an English-speaking country,
           it is necessary to enroll and write the IELTS exams, especially for
           immigration purposes. In recent times we have seen the reduction of
@@ -125,10 +130,12 @@ const Coaching = () => {
         </Typography>
         <div>
           <div className="my-12">
-            <Typography variant="h6" className="font-bold">Requirements Needed</Typography>
+            <Typography variant="h6" className="font-bold">
+              Requirements Needed
+            </Typography>
             <Typography>
               {" "}
-              <Typography>
+              <Typography className="text-base">
                 To be qualified to write the IELTS examination, you must have a
                 valid passport from your country of residence, or which has at
                 least six months before it expires.
@@ -155,10 +162,12 @@ const Coaching = () => {
             </Typography>
           </div> */}
           <div className="my-12">
-            <Typography variant="h6" className="font-bold">How To Apply</Typography>
+            <Typography variant="h6" className="font-bold">
+              How To Apply
+            </Typography>
             <Typography>
               {" "}
-              <Typography>
+              <Typography className="text-base">
                 To apply for the IELTS examination, you will have to provide the
                 necessary information, book a convenient date and time, attach
                 your passport, and proceed to make payment for the exams.
