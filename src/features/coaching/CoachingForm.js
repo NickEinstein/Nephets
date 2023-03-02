@@ -57,7 +57,7 @@ const CoachingForm = () => {
       <div className="w- p-5 px-20 flex justify-center">
         <div class="w-3/5">
           <Typography
-            className="pt-8  text-center  text-bold text-black"
+            className="pt-8  text-center  text-bold text-primary-main "
             variant="h3"
           >
             IELTS Enrollment Form

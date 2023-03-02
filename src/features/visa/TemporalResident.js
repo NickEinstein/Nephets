@@ -71,7 +71,7 @@ const TemporalResident = () => {
           className="absolute  w-full"
         >
           <div className=" w-full px-[10%] py-[10%]  justify-between font-extrabold text-primary-main ">
-            <Typography className="font-extrabold" variant="h2">
+            <Typography className="font-extrabold text-primary-main" variant="h2">
               TEMPORAL RESIDENCE
             </Typography>
             {/* <Divider /> */}

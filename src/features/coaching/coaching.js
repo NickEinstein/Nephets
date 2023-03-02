@@ -85,7 +85,7 @@ const Coaching = () => {
         </div>
       </div>
       <div className="px-[10%]">
-        <Typography className="my-16 text-center font-semibold" variant="h4">
+        <Typography className="my-16 text-center font-semibold text-primary-main" variant="h4">
           What You Should Know Before Your Journey Starts
         </Typography>
         <div className="flex items-start gap-2 mb-4">
