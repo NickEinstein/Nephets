@@ -5,6 +5,7 @@ import VisaImage from "../../assets/nehpets/VisaImage.svg";
 import VisaImage2 from "../../assets/nehpets/BabyToReplaceVisa.jpg";
 import Header from "features/header/header";
 import { Link } from "react-router-dom";
+import Footer from "common/Footer";
 
 const Visa = () => {
   return (
@@ -12,7 +13,10 @@ const Visa = () => {
       <Header underlined="visa" />
 
       <div className=" h-[260] w-100 p-5  px-[15%] ">
-        <Typography className="my-16 text-center font-extrabold text-primary-main" variant="h4">
+        <Typography
+          className="my-16 text-center font-extrabold text-primary-main"
+          variant="h4"
+        >
           Have You Asked The "WHY QUESTION?"
         </Typography>
         <div className="flex items-start gap-4 mb-4">
@@ -104,6 +108,7 @@ const Visa = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

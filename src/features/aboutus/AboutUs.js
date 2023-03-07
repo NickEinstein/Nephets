@@ -29,6 +29,7 @@ import AboutImage from "../../assets/nehpets/AboutUsImage.svg";
 import useStepper from "hooks/useStepper";
 import { useEffect, useRef } from "react";
 import useDataRef from "hooks/useDataRef";
+import Footer from "common/Footer";
 
 function AboutUs() {
    const configs = [
@@ -87,7 +88,10 @@ function AboutUs() {
 
           <div class="w-full flex justify-center ">
             <div className="text-center py-8 px-10 w-3/5 border bg-white rounded-lg">
-              <Typography className="my-6 font-bold text-primary-main" variant="h4">
+              <Typography
+                className="my-6 font-bold text-primary-main"
+                variant="h4"
+              >
                 What We Do
               </Typography>
               <Typography className="text-base">
@@ -108,6 +112,7 @@ function AboutUs() {
           </div>
         </div>
       </div>
+      {/* <Footer /> */}
     </>
   );
 }

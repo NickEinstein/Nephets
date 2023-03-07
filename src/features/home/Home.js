@@ -15,9 +15,7 @@ import home1Image from "../../assets/nehpets/NehpetsHome.jpg";
 import home2Image from "../../assets/nehpets/Tourist.jpg";
 import home3Image from "../../assets/nehpets/NehpetsHome3.jpg";
 import { useEffect, useMemo, useRef, useState } from "react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import "./HomeTopSectionBackgroundColor.css";
+// import "./HomeTopSectionBackgroundColor.css";
 import CategoryApi from "apis/CategoryApi";
 import useStepper from "hooks/useStepper";
 import useDataRef from "hooks/useDataRef";
@@ -41,6 +39,7 @@ import cardImage from "../../assets/nehpets/LinkCard_one.svg";
 import cardImage2 from "../../assets/nehpets/LinkCard_two.svg";
 import HomeWhyChooseUs from "./HomeWhyChooseUs";
 import { Link } from "react-router-dom";
+import Footer from "common/Footer";
 
 
 
@@ -215,8 +214,12 @@ function Home() {
           <HomeUsersCard />
         </div>
 
+      
+
         {/* Section 4 */}
         <HomeWhyChooseUs />
+
+        <Footer/>
       </div>
     </>
   );

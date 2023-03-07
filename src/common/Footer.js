@@ -1,83 +1,93 @@
-import React from 'react';
+import React from "react";
+import {
+  Typography,
+  Container,
+  Toolbar,
+  Tabs,
+  Tab,
+  Collapse,
+  Fade,
+  Paper,
+  Icon,
+  Button,
+} from "@mui/material";
+import {
+  AiFillFacebook,
+  AiOutlineInstagram,
+  AiFillLinkedin,
+  AiFillTwitterSquare,
+  AiTwotoneMail,
+  AiFillPhone,
+} from "react-icons/ai";
 // import ReactDOM from 'react-dom';
 // import { BsYoutube,BsFacebook,BsInstagram, BsApple, BsFillFileEarmarkCodeFill } from 'react-icons/bs';
 // import { AiFillAndroid,AiOutlineCopyright, AiFillUnlock } from 'react-icons/ai';
-
+import logo from "assets/nehpets/Nehpets logo 1.svg";
 
 const Footer = () => {
-    return (
-        <div style={{backgroundColor:'#370548', padding:'70px 60px', color:'white'}} className='footer general-padding flex-between' >
-            <ul>
-                <h2 style={{fontSize:"22px", marginBottom:'100px', color:'white'}}>Categories</h2>
-               
+  return (
+    <div
+      style={{
+        // backgroundColor: "#370548",
+        // padding: "70px 60px",
+        color: "white",
+      }}
+      className="px-[10%] py-[60px] bg-primary-main flex justify-between"
+    >
+      <div>
+        <img src={logo} />
+        <Typography className="font-bold">
+          Planning Together to Achieve your dream
+        </Typography>
+      </div>
+      <ul className="text-base flex flex-col gap-3">
+        <h2 style={{ fontSize: "22px", marginBottom: "30px", color: "white" }}>
+          Quick Links
+        </h2>
 
-                <li> Development & IT</li>
-                <li>Design & Creative</li>
-                <li>Sales & Marketing</li>
-                <li>Writing & Translation</li>
-                <li>Backend Development</li>
-                <li>CMS Development</li>
-                <li>HR & Training</li>
-                <li>Legal</li>
-                <li>Hire freelancers</li>
-                <li>Mobile App Development</li>
-            </ul>
+        <li> Home</li>
+        <li>Coaching</li>
+        <li>Visa</li>
+        <li>About Us</li>
+      </ul>
 
-            <ul>
-                <h2 style={{fontSize:"22px", marginBottom:'100px', color:'white'}}>For Freelancer</h2>
-               
+      <ul className="text-base flex flex-col gap-3">
+        <h2 style={{ fontSize: "22px", marginBottom: "30px", color: "white" }}>
+          Contact Us
+        </h2>
+        <li className="flex gap-3 items-center">
+          <AiFillPhone /> +234 7033149424
+        </li>
+        <li className="flex gap-3 items-center">
+          <AiFillPhone /> +1 (204) 441 - 4828
+        </li>
+        <li className="flex gap-3 items-center">
+          <AiTwotoneMail /> Info@nehpetsconsult.com
+        </li>
+      </ul>
 
-                
-                <li>How to Find Work</li>
-                <li>Direct Contracts</li>
-                <li>How to update profile</li>
+      <ul className="text-base flex flex-col gap-3">
+        <h2 style={{ fontSize: "22px", marginBottom: "30px", color: "white" }}>
+          Social Media
+        </h2>
 
-
-            </ul>
-
-
-            <ul>
-                <h2 style={{fontSize:"22px", marginBottom:'100px', color:'white'}}>For Clients</h2>
-               
-
-                <li> How To Hire</li>
-                <li>Talent Scout</li>
-                <li>Sales & Marketing</li>
-                <li>Payment Method</li>
-                <li>Direct Contracts</li>
-                <li>Hire Worldwide</li>
-               
-               
-            </ul>
-
-            <ul>
-                <h2 style={{fontSize:"22px", marginBottom:'100px', color:'white'}}>About Us</h2>
-               
-
-                
-
-                <li> Investor Relations</li>
-                <li> Careers</li>
-                <li>Our Impact</li>
-                <li>Press</li>
-                <li>Contact Us</li>
-            </ul>
-                
-
-            <ul>
-                <h2 style={{fontSize:"22px", marginBottom:'100px', color:'white'}}>Support</h2>
-               
-                
-
-
-
-                <li> Help & Support</li>
-                <li>Trust & Safety</li>
-                <li>FAQs</li>
-                <li>Community</li>
-                
-            </ul>
+        <div className="flex gap-4 ">
+          <li>
+            {" "}
+            <AiOutlineInstagram style={{ fontSize: "36px" }} />
+          </li>
+          <li>
+            <AiFillFacebook style={{ fontSize: "36px" }} />
+          </li>
+          <li>
+            <AiFillTwitterSquare style={{ fontSize: "36px" }} />
+          </li>
+          <li>
+            <AiFillLinkedin style={{ fontSize: "36px" }} />
+          </li>
         </div>
-    )
-}
+      </ul>
+    </div>
+  );
+};
 export default Footer;
