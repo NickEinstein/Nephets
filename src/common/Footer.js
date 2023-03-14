@@ -32,7 +32,7 @@ const Footer = () => {
         // padding: "70px 60px",
         color: "white",
       }}
-      className="px-[10%] py-[60px] bg-primary-main flex justify-between"
+      className="px-[10%] py-[60px] bg-[#AB0035] flex justify-between"
     >
       <div>
         <img src={logo} />

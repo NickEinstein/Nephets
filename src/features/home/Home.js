@@ -159,10 +159,10 @@ function Home() {
                 class="w-[260px] h-[230px] z-20 absolute left-0"
                 src={africanChildred}
               />
-              <img
+              {/* <img
                 class="absolute w-[260px] h-[260px] top-[100px] left-[215px]"
                 src={chinesesgirlsImage}
-              />
+              /> */}
               <img
                 class="w-12 absolute top-[30px] left-[300px]"
                 src={yellowBallImage}
@@ -171,14 +171,14 @@ function Home() {
                 class="w-20 absolute top-[190px] -z-10 -left-6"
                 src={yellowBallImage}
               />
-              <div
+              {/* <div
                 class="w-24 h-24 rounded-full text-white flex flex-col items-center justify-center absolute text-[11px] top-[250px] z-10 left-[220px] bg-[#AB0035]"
                 // src={maroonBallImage}
               >
                 <Typography className="">200+</Typography>
                 <Typography className="">completed</Typography>
                 <Typography className=""> visas</Typography>
-              </div>
+              </div> */}
 
               {/* <img
                   class="w-40 absolute top-[60%] left-[8%]"

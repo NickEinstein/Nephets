@@ -9,17 +9,17 @@ import "react-multi-carousel/lib/styles.css";
 
 const HomeUsersCard = () => {
   return (
-    <div className="bg-[#AB0035] w-100 p-5 ">
+    <div className="bg-[#AB0035] p-5 ">
       <Typography className="py-8 text-center text-white" variant="h4">
         What Our Users Say About Us
       </Typography>
-      <div class="flex justify-between gap-4 mt-4">
+      <div class="flex justify-between gap-4 items-center  w-full mt-4">
         <Carousel
           additionalTransfrom={0}
           arrows
           autoPlaySpeed={3000}
           centerMode={false}
-          className=""
+          className="w-full mx-auto"
           containerClass="container"
           dotListClass=""
           draggable
@@ -38,7 +38,7 @@ const HomeUsersCard = () => {
                 max: 3000,
                 min: 1024,
               },
-              items: 3,
+              items: 1,
               partialVisibilityGutter: 40,
             },
             mobile: {
@@ -54,7 +54,7 @@ const HomeUsersCard = () => {
                 max: 1024,
                 min: 464,
               },
-              items: 2,
+              items: 1,
               partialVisibilityGutter: 30,
             },
           }}
@@ -84,23 +84,22 @@ const HomeUsersCard = () => {
               text: `In 2022 I was recommended to try this service, and the journey
               thus far has been awesome, I enroll in the IELTS session, and I
               must say it was very impactful, I was able to secure two
-              admissions within the space. Thanks to Nehpets Consulting.`,
+              admissions within the space. Thanks to Nehpets Consults.`,
             },
             {
               image: userAvatarImage2,
               title: "Emmanuel",
-              text: `Nehpets Consulting has shown what it meant to be a consulting
+              text: `Nehpets Consults has shown what it meant to be a consulting
               firm. Through this platform, I was able to secure admission to
               Canada. They are keen to hold your hands while working through
               this process, with detailed information, pros and cons, cost
               implication and other relevant information for settling in Canada.`,
             },
-           
           ].map((card, index) => (
-            <div className="relative my-8  bg-[#D9D9D9] p-3 w-11/12 ">
+            <div className="relative my-8  bg-[#D9D9D9] p-3 ">
               <div className="full ">
                 <img
-                  className="w-16 h-16 left-[40%] rounded-full absolute -top-7"
+                  className="w-16 h-16 left-[47%] rounded-full absolute -top-7"
                   src={card.image}
                 />
               </div>
@@ -108,9 +107,11 @@ const HomeUsersCard = () => {
                 <Typography className="text-center" variant="h6">
                   {card.title}
                 </Typography>
-                <Typography variant="" className="text-base">
-                  {card.text}
-                </Typography>
+                <div className=" px-24 py-8">
+                  <Typography variant="" className="text-base ">
+                    {card.text}
+                  </Typography>
+                </div>
                 <Typography className="mt-4 text-xs">Student visa</Typography>
               </div>
             </div>

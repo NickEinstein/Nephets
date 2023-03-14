@@ -55,8 +55,9 @@ const Visa = () => {
             <li>Do I have the financial strength to pursue such a process?</li>
             <li>
               Do I have the necessary skill needed for the prospective labour
-              market? • Decide on the path or process to follow.
+              market?
             </li>
+            <li> Decide on the path or process to follow.</li>
           </ul>
         </Typography>
         <div>
