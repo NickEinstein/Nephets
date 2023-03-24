@@ -178,7 +178,7 @@ const Coaching = () => {
               </Typography>
             </Typography>
           </div>
-          <div className="flex justify-end">
+          <div className="flex justify-end my-8">
             <Link to="/coaching-form">
               <Button>Book Now</Button>
             </Link>

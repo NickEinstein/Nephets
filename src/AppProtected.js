@@ -83,25 +83,14 @@ function getRoutes({ REDIRECT_PATH }) {
       path: "*",
       element: <Navigate to={REDIRECT_PATH} replace />,
     },
-    {
-      path: RouteEnum.HOW_IT_WORKS,
-      element: lazy(() => import("features/how-it-works/HowItWorks")),
-    },
-    {
-      path: RouteEnum.PROFILE.concat("/*"),
-      element: lazy(() => import("features/profile/Profile")),
-    },
-    {
-      path: RouteEnum.SETTINGS.concat("/*"),
-      element: lazy(() => import("features/setting/Setting")),
-    },
-    {
-      path: RouteEnum.PROJECTS.concat("/*"),
-      element: lazy(() => import("features/project/Project")),
-    },
-    {
-      path: RouteEnum.JOBS.concat("/*"),
-      element: lazy(() => import("features/job/Job")),
-    },
+   
+    // {
+    //   path: RouteEnum.PROJECTS.concat("/*"),
+    //   element: lazy(() => import("features/project/Project")),
+    // },
+    // {
+    //   path: RouteEnum.JOBS.concat("/*"),
+    //   element: lazy(() => import("features/job/Job")),
+    // },
   ]);
 }

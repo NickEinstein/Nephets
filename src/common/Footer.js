@@ -72,19 +72,25 @@ const Footer = () => {
         </h2>
 
         <div className="flex gap-4 ">
-          <li>
+          <a>
             {" "}
             <AiOutlineInstagram style={{ fontSize: "36px" }} />
-          </li>
-          <li>
+          </a>
+          <a
+            href="https://www.facebook.com/profile.php?id=100090851305102&mibextid=ZbWKwL
+"
+          >
             <AiFillFacebook style={{ fontSize: "36px" }} />
-          </li>
+          </a>
           <li>
             <AiFillTwitterSquare style={{ fontSize: "36px" }} />
           </li>
-          <li>
+          <a
+            href="https://www.linkedin.com/company/nehpets-consult/
+"
+          >
             <AiFillLinkedin style={{ fontSize: "36px" }} />
-          </li>
+          </a>
         </div>
       </ul>
     </div>

@@ -109,6 +109,7 @@ const Visa = () => {
           </div>
         </div>
       </div>
+    
       <Footer />
     </div>
   );

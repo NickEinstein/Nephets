@@ -62,10 +62,10 @@ const ROUTES = configureRoutes([
   //   path: RouteEnum.SIGNUPCLIENTF,
   //   element: lazy(() => import("features/signup/SignUpClientF")),
   // },
-  {
-    path: RouteEnum.LOGIN,
-    element: lazy(() => import("features/login/Login")),
-  },
+  // {
+  //   path: RouteEnum.LOGIN,
+  //   element: lazy(() => import("features/login/Login")),
+  // },
 ]);
 
 export default AppPublic;
