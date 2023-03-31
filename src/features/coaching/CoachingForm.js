@@ -69,9 +69,9 @@ const CoachingForm = () => {
           e.target.value == "100,000"
             ? "IELTS Registration"
             : e.target.value == "150,000"
-            ? "IELTS/Tutorials/Study Materials"
+            ? "IELTS Reg/Tutorial/materials "
             : e.target.value == "30,000"
-            ? "Consultation"
+            ? "IELTS Tutorial"
             : "",
       });
       return;
@@ -267,9 +267,10 @@ const CoachingForm = () => {
                   }}
                 >
                   <MenuItem value={"100,000"}>IELTS Registration</MenuItem>
-                  <MenuItem value={"150,000"}>Tutorial</MenuItem>
-                  <MenuItem value={"30,000"}>Consultation</MenuItem>
-                  <MenuItem value={"30,000"}>Study Materials</MenuItem>
+                  <MenuItem value={"30,000"}>IELTS Tutorial</MenuItem>
+                  <MenuItem value={"150,000"}>
+                    IELTS Reg/Tutorial/materials 
+                  </MenuItem>
                 </Select>
               </FormControl>
               <TextField
