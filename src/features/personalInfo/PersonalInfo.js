@@ -158,21 +158,18 @@ const HomeUsersCard = () => {
       value: "Visiting",
       label: "Visiting",
     },
-    {
-      value: "Permanent",
-      label: "Permanent",
-    },
-    {
+      {
       value: "Education",
       label: "Education",
     },
-    {
+     {
       value: "Work",
       label: "Work",
-    },
+    },  
+   
     {
-      value: "Residence",
-      label: "Residence",
+      value: "Permanent Residence",
+      label: "Permanent Residence",
     },
   ];
 

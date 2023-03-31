@@ -56,7 +56,7 @@ const Footer = () => {
           Contact Us
         </h2>
         <li className="flex gap-3 items-center">
-          <AiFillPhone /> +234 7033149424
+          <AiFillPhone /> +234 (904) 919 5599
         </li>
         <li className="flex gap-3 items-center">
           <AiFillPhone /> +1 (204) 441 - 4828
@@ -72,7 +72,7 @@ const Footer = () => {
         </h2>
 
         <div className="flex gap-4 ">
-          <a>
+          <a href="https://instagram.com/nehpetsconsult?igshid=ZDdkNTZiNTM=">
             {" "}
             <AiOutlineInstagram style={{ fontSize: "36px" }} />
           </a>
@@ -82,9 +82,9 @@ const Footer = () => {
           >
             <AiFillFacebook style={{ fontSize: "36px" }} />
           </a>
-          <li>
+          <a href="https://twitter.com/Nehpetsconsult">
             <AiFillTwitterSquare style={{ fontSize: "36px" }} />
-          </li>
+          </a>
           <a
             href="https://www.linkedin.com/company/nehpets-consult/
 "

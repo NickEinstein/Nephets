@@ -240,9 +240,10 @@ const CoachingForm = () => {
                       onChange={(newValue) => {
                         // setWorkList({ ...workList, start_date: newValue });
                         setStart_date(moment(newValue).format("YYYY-MM-DD"));
-                        setFormdata({...formdata, 
-                          ieltsExamDate: moment(newValue).format("YYYY-MM-DD")
-                        })
+                        setFormdata({
+                          ...formdata,
+                          ieltsExamDate: moment(newValue).format("YYYY-MM-DD"),
+                        });
                         // setValue(newValue);
                       }}
                       renderInput={(params) => <TextField {...params} />}
@@ -266,10 +267,9 @@ const CoachingForm = () => {
                   }}
                 >
                   <MenuItem value={"100,000"}>IELTS Registration</MenuItem>
-                  <MenuItem value={"150,000"}>
-                    IELTS Reg / Tutorial/Study Materials
-                  </MenuItem>
+                  <MenuItem value={"150,000"}>Tutorial</MenuItem>
                   <MenuItem value={"30,000"}>Consultation</MenuItem>
+                  <MenuItem value={"30,000"}>Study Materials</MenuItem>
                 </Select>
               </FormControl>
               <TextField

@@ -19,7 +19,7 @@ const HomeWhyChooseUs = () => {
           <div className="w-16 h-16 bg-[#FFB13680] rounded-full absolute -bottom-7 -right-7"></div>
           <div className="w-16 h-16 bg-[#FFB13680] rounded-full absolute -bottom-7 -left-7"></div>
           <div className="text-center text-white">
-            <Typography variant="h6">20 +</Typography>
+            <Typography variant="h6">250 +</Typography>
             <Typography variant=""> Visas</Typography>
           </div>
         </div>
@@ -28,7 +28,7 @@ const HomeWhyChooseUs = () => {
           <div className="w-16 h-16 bg-[#FFB13680] rounded-full absolute -top-7 -right-7"></div>
           <div className="w-16 h-16 bg-[#FFB13680] rounded-full absolute -bottom-7 -left-7"></div>
           <div className="text-center text-white">
-            <Typography variant="h6">50 +</Typography>
+            <Typography variant="h6">250 +</Typography>
             <Typography variant=""> IELTS</Typography>
           </div>
         </div>
@@ -37,7 +37,7 @@ const HomeWhyChooseUs = () => {
           <div className="w-16 h-16 bg-[#FFB13680] rounded-full absolute -top-7 -right-7"></div>
           <div className="w-16 h-16 bg-[#FFB13680] rounded-full absolute  -left-7"></div>
           <div className="text-center text-white">
-            <Typography variant="h6">50 +</Typography>
+            <Typography variant="h6">250 +</Typography>
             <Typography variant=""> Students</Typography>
           </div>
         </div>
