@@ -10,17 +10,24 @@ import {
   DialogTitle,
   DialogContent,
 } from "@mui/material";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+
 import userAvatarImage from "../../assets/nehpets/HomeUser_Avartar.svg";
 import { Box } from "@mui/system";
 import { post } from "services/fetch";
 import Header from "features/header/header";
 import React, { useState } from "react";
 import { useSnackbar } from "notistack";
+import moment from "moment";
 
 const HomeUsersCard = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   const [current, setCurrent] = useState(true);
+  const [start_date, setStart_date] = React.useState();
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -30,14 +37,8 @@ const HomeUsersCard = () => {
   const [open, setOpen] = useState(false);
   const pay = async () => {
     let payload = {
-      amount:
-        paydata.amount == "100,000"
-          ? 100000
-          : paydata.amount == "150,000"
-          ? 150000
-          : paydata.amount == "30,000"
-          ? 30000
-          : null,
+      amount: 50000,
+        
       email: formdata.email,
       firstName: formdata.firstName,
       lastName: formdata.lastName,
@@ -72,12 +73,20 @@ const HomeUsersCard = () => {
    });
   const educationLevel = [
     {
+      value: "BSC",
+      label: "BSC",
+    },
+    {
       value: "PHD",
       label: "PHD",
     },
     {
       value: "Masters",
       label: "Masters",
+    },
+    {
+      value: "ND",
+      label: "ND",
     },
     {
       value: "HND",
@@ -239,7 +248,24 @@ const HomeUsersCard = () => {
       body: { ...formdata },
       auth: false,
     });
+     
+
+    if(res.status == 200){
+      pay()
+    }
+    else{
+       enqueueSnackbar(res?.data?.message || "Sorry something went wrong, try again", {
+         variant: "error",
+       });
+    }
+
+    
+
+  console.log(res);
+
   };
+
+
 
   console.log(formdata);
 
@@ -405,7 +431,7 @@ const HomeUsersCard = () => {
                   name="howManyMembersHouseHold"
                 />
                 <TextField
-                  selec
+                  select
                   onChange={onChange}
                   className="w-full"
                   id="outlined-basic"
@@ -517,7 +543,7 @@ const HomeUsersCard = () => {
                   name="aboutNephetsConsults"
                 />
               </div>
-              <Button onClick={add} className="h-10">
+              <Button onClick={handleClickOpen} className="h-10">
                 Submit Form
               </Button>
             </Box>
@@ -576,7 +602,7 @@ const HomeUsersCard = () => {
                       </div>
                       <div class="flex gap-6">
                         <TextField
-                          value={`${paydata.amount} naira`}
+                          value={`${50000} naira`}
                           disabled
                           className="w-full"
                           id="outlined-basic"
@@ -598,7 +624,31 @@ const HomeUsersCard = () => {
                         />
                       </div>
 
-                      <Button onClick={pay} className="h-10 rounded-full">
+                      <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <div className="flex-between">
+                          <DatePicker
+                            fullWidth
+                            className=" mr-8 w-full"
+                            label="Appointment Date"
+                            value={start_date}
+                            onChange={(newValue) => {
+                              // setWorkList({ ...workList, start_date: newValue });
+                              setStart_date(
+                                moment(newValue).format("YYYY-MM-DD")
+                              );
+                              setFormdata({
+                                ...formdata,
+                                appointmentDate:
+                                  moment(newValue).format("YYYY-MM-DD"),
+                              });
+                              // setValue(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                          />
+                        </div>
+                      </LocalizationProvider>
+
+                      <Button onClick={add} className="h-10 rounded-full">
                         Make Payment
                       </Button>
                     </Box>
