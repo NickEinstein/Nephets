@@ -70,8 +70,8 @@ const PermanentResident = () => {
           //   style={{ display: configs.length - 1 == stepper.step && "none" }}
           className="absolute  w-full"
         >
-          <div className=" w-full px-[10%] py-[10%]  justify-between font-extrabold text-primary-main ">
-            <Typography className="font-extrabold" variant="h2">
+          <div className=" w-full px-[10%] md:py-[10%]   justify-between font-extrabold text-primary-main ">
+            <Typography className="font-extrabold md:mt-16 mt-32" variant="h2">
               PERMANENT RESIDENCE
             </Typography>
             {/* <Divider /> */}
@@ -85,7 +85,7 @@ const PermanentResident = () => {
         </div>
       </div>
 
-      <div class="flex gap-5 px-[10%]">
+      <div class="flex  md:flex-row flex-col gap-5 px-[10%]">
         <div className="">
           <div className="h-48">
             <Typography className="my-4 font-semibold" variant="h4">

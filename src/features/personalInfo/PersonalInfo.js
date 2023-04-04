@@ -271,8 +271,8 @@ const HomeUsersCard = () => {
       <Header />
 
       {current && (
-        <div className="w- p-5 px-20 flex justify-center">
-          <div class="w-3/5">
+        <div className=" md:p-5 md:px-20 pt-16 md:pt-0 flex justify-center">
+          <div class="md:w-3/5">
             <Typography
               className="pt-8  text-center  text-bold text-black"
               variant="h3"
@@ -309,7 +309,7 @@ const HomeUsersCard = () => {
                   className="w-full"
                 />
               </div>
-              <div class="flex gap-6">
+              <div class="flex md:gap-6 gap-2">
                 <TextField
                   className="w-full"
                   id="outlined-basic"
@@ -329,21 +329,21 @@ const HomeUsersCard = () => {
               </div>
               <TextField
                 onChange={onChange}
-                className="w-full"
+                // className="w-full"
                 id="outlined-basic"
-                label="Current Mailing Address (Residency)"
+                label="Current Mailing Address (Residence)"
                 variant="outlined"
                 name="mailingAddress"
               />
               <TextField
                 onChange={onChange}
-                className="w-full"
+                // className="w-full"
                 id="outlined-basic"
                 label="Email"
                 variant="outlined"
                 name="email"
               />
-              <div class="flex gap-6">
+              <div class="flex md:gap-6 gap-3">
                 <TextField
                   onChange={onChange}
                   className="w-full"
@@ -361,7 +361,7 @@ const HomeUsersCard = () => {
                   name="country"
                 />
               </div>
-              <div class="flex gap-6">
+              <div class="flex md:flex-row flex-col gap-6">
                 <TextField
                   select
                   onChange={onChange}
@@ -393,6 +393,7 @@ const HomeUsersCard = () => {
                   ))}
                 </TextField>
               </div>
+
               <div class="flex gap-6">
                 <TextField
                   select
@@ -413,12 +414,12 @@ const HomeUsersCard = () => {
                   onChange={onChange}
                   className="w-full"
                   id="outlined-basic"
-                  label="Do you have any dependent children?"
+                  label="Current Occupation"
                   variant="outlined"
-                  name="children"
+                  name="currentOccupation"
                 />
               </div>
-              <div class="flex gap-6">
+              <div class="flex gap-6 md:flex-row flex-col">
                 <TextField
                   onChange={onChange}
                   className="w-full"
@@ -443,14 +444,14 @@ const HomeUsersCard = () => {
                   ))}
                 </TextField>
               </div>
-              <div class="flex gap-6">
+              <div class="flex gap-6 md:flex-row flex-col">
                 <TextField
                   onChange={onChange}
                   className="w-full"
                   id="outlined-basic"
-                  label="Current Occupation"
+                  label="Do you have any dependent children?"
                   variant="outlined"
-                  name="currentOccupation"
+                  name="children"
                 />
                 <TextField
                   onChange={onChange}
@@ -466,7 +467,7 @@ const HomeUsersCard = () => {
                   onChange={onChange}
                   className="w-full"
                   id="outlined-basic"
-                  label="Which of Canadian Official languages do you speak? Check all that apply"
+                  label="Which Canadian languages do you speak?"
                   variant="outlined"
                   name="canadianOfficialLanguage"
                 />
@@ -479,7 +480,7 @@ const HomeUsersCard = () => {
                   name="firstLanguage"
                 />
               </div>
-              <div class="flex gap-6">
+              <div class="flex md:flex-row flex-col gap-6">
                 <TextField
                   onChange={onChange}
                   className="w-full"
@@ -497,7 +498,7 @@ const HomeUsersCard = () => {
                   name="amountOfSettlementFunds"
                 />
               </div>
-              <div class="flex gap-6">
+              <div class="flex gap-6 md:flex-row flex-col">
                 <TextField
                   onChange={onChange}
                   className="w-full"
@@ -515,13 +516,13 @@ const HomeUsersCard = () => {
                   name="ieltsMonthYear"
                 />
               </div>
-              <div class="flex gap-6">
+              <div class="flex gap-6 md:flex-row flex-col">
                 <TextField
                   select
                   onChange={onChange}
                   className="w-full"
                   id="outlined-basic"
-                  label="What province or territory are you interested in migrating to? Check all that apply"
+                  label="What province  are you interested in migrating to?"
                   variant="outlined"
                   name="provinceMigrating"
                 >
@@ -557,7 +558,7 @@ const HomeUsersCard = () => {
             >
               <DialogTitle id="alert-dialog-title"> Payment Form</DialogTitle>
               <DialogContent className="w-full ">
-                <div className="w- p-5 px-20 flex justify-center">
+                <div className="w- p-5 md:px-20 flex justify-center">
                   <div class="w-3/5">
                     <Typography
                       className="py-8  text-center  text-bold text-primary-main "

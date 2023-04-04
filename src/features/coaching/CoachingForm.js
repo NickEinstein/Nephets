@@ -153,8 +153,8 @@ const CoachingForm = () => {
   return (
     <div>
       <Header />
-      <div className="w- p-5 px-20 flex justify-center">
-        <div class="w-3/5">
+      <div className="w- p-5 md:px-20 flex justify-center">
+        <div class="md:w-3/5 pt-20">
           <Typography
             className="pt-8  text-center  text-bold text-primary-main "
             variant="h3"
@@ -300,8 +300,8 @@ const CoachingForm = () => {
         >
           <DialogTitle id="alert-dialog-title"> Payment Form</DialogTitle>
           <DialogContent className="w-full ">
-            <div className="w- p-5 px-20 flex justify-center">
-              <div class="w-3/5">
+            <div className="w- p-5 md:px-20 flex justify-center">
+              <div class="md:w-3/5">
                 <Typography
                   className="py-8  text-center  text-bold text-primary-main "
                   variant="h5"

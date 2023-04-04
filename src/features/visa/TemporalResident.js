@@ -71,7 +71,10 @@ const TemporalResident = () => {
           className="absolute  w-full"
         >
           <div className=" w-full px-[10%] py-[10%]  justify-between font-extrabold text-primary-main ">
-            <Typography className="font-extrabold text-primary-main" variant="h2">
+            <Typography
+              className="font-extrabold text-primary-main mt-20"
+              variant="h2"
+            >
               TEMPORAL RESIDENCE
             </Typography>
             {/* <Divider /> */}
@@ -84,7 +87,7 @@ const TemporalResident = () => {
           </div>
         </div>
       </div>
-      <div class="flex gap-5 w-full px-[10%]">
+      <div class="flex gap-5 w-full md:flex-row flex-col px-[10%]">
         <div className="w-full">
           <Typography className="my-4 font-semibold" variant="h4">
             STUDENT VISA
