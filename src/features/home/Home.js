@@ -111,10 +111,10 @@ function Home() {
               ))}
             </div>
           </div> */}
-          <Header step={stepper.step} underlined="home" />
+          {/* <Header step={stepper.step} underlined="home" /> */}
 
           <div className="px-[10%] ">
-            <div className="my-32 w-2/5 text-white ">
+            <div className="py-32 md:w-2/5 text-white ">
               <Typography variant="h4">
                 Immigration & Visa Consultant Agent
               </Typography>
@@ -129,7 +129,7 @@ function Home() {
         </div>
 
         <div class="relative">
-          <div class="w-full absolute -top-[70px]">
+          <div class="w-full absolute md:-top-[70px] -top-[200px] z-50 md:z-10">
             <div class="flex justify-around">
               <LinkCard
                 to="/visa"
@@ -149,14 +149,14 @@ function Home() {
 
         <div className="relative w-full h-[500px] p-[3%]">
           <img
-            className="absolute right-[7%] top-9 w-40 -z-10"
+            className="absolute hidden md:block right-[7%] top-9 w-40 -z-10"
             src={ashBallImage}
           />
 
           <div className="relative w-100  px-[23%] pl-[12%] flex mt-20">
-            <div className="relative w-full  ">
+            <div className="relative w-full hidden md:block ">
               <img
-                class="w-[260px] h-[230px] z-20 absolute left-0"
+                class="w-[260px] hidden md:block h-[230px] z-20 absolute left-0"
                 src={africanChildred}
               />
               {/* <img
@@ -164,11 +164,11 @@ function Home() {
                 src={chinesesgirlsImage}
               /> */}
               <img
-                class="w-12 absolute top-[30px] left-[300px]"
+                class="w-12 hidden md:block absolute top-[30px] left-[300px]"
                 src={yellowBallImage}
               />
               <img
-                class="w-20 absolute top-[190px] -z-10 -left-6"
+                class="w-20 hidden md:block absolute top-[190px] -z-10 -left-6"
                 src={yellowBallImage}
               />
               {/* <div
@@ -186,12 +186,12 @@ function Home() {
                 />
                 <img class="w-40" src={yellowBallSmallImage} /> */}
             </div>
-            <div className="relative w-[550px]">
-              <img className="w-60" src={ashBallImage} />
-              <div className="absolute -top-5 left-[50px] ">
+            <div className="relative md:w-[550px] my-20 md:my-0 w-full">
+              <img className="w-80 hidden md:block" src={ashBallImage} />
+              <div className="absolute w-[300px] md:left-5 md:top-10 top-4">
                 <Typography
-                  className="my-3 w-full font-extrabold text-center"
-                  variant="h6"
+                  className="my-3 mb-6 w-full font-extrabold text-center"
+                  variant="h4"
                 >
                   Get coached by experienced tutors
                 </Typography>
@@ -199,13 +199,13 @@ function Home() {
                   We’ve been coaching and registering students for IELTS exams
                   for educational opportunities in foreign countries
                 </Typography>
+                <Link
+                  to="/coaching-form"
+                  className=" md:left-[50px] flex md:mt-12 mt-4 mr-5 w-full justify-center"
+                >
+                  <Button className="w-32">Enroll </Button>
+                </Link>
               </div>
-              <Link
-                to="/coaching-form"
-                className="absolute bottom-5 left-[50px]"
-              >
-                <Button className="w-32">Enroll </Button>
-              </Link>
             </div>
           </div>
         </div>
@@ -214,12 +214,10 @@ function Home() {
           <HomeUsersCard />
         </div>
 
-      
-
         {/* Section 4 */}
         <HomeWhyChooseUs />
 
-        <Footer/>
+        <Footer />
       </div>
     </>
   );

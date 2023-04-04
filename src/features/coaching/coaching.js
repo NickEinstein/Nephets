@@ -1,6 +1,6 @@
 import logo from "../../assets/nehpets/Nehpets logo 1.svg";
 import cardImage from "../../assets/nehpets/LinkCard_one.svg";
-import { Button, Divider, Typography } from "@mui/material";
+import { Button, Divider, Typography, useMediaQuery } from "@mui/material";
 import VisaImage from "../../assets/nehpets/PictureForVisa.jpg";
 import VisaImage1 from "../../assets/nehpets/Coaching1.jpg";
 import VisaImage2 from "../../assets/nehpets/Coaching2.jpg";
@@ -12,50 +12,77 @@ import useStepper from "hooks/useStepper";
 import useDataRef from "hooks/useDataRef";
 import { useEffect } from "react";
 import Footer from "common/Footer";
+import { MediaQueryBreakpointEnum } from "constants/Global";
 
 const Coaching = () => {
-   const configs = [
+  const ismd = useMediaQuery(MediaQueryBreakpointEnum.md);
+
+  const configs = [
     //  {
     //    bgColor: "HomeTopSectionBackgroundColor_WomanInRedImage",
     //    textColor: "text-secondary-main",
     //    image: VisaImage1,
     //  },
-     {
-       bgColor: "HomeTopSectionBackgroundColor_ManInDreadsImage",
-       textColor: "text-white",
-       image: VisaImage2,
-     },
-     {
-       bgColor: "HomeTopSectionBackgroundColor_headerImage",
-       textColor: "text-secondary-main",
-       image: VisaImage3,
-     },
-     {
-       bgColor: "HomeTopSectionBackgroundColor_headerImage",
-       textColor: "text-secondary-main",
-       image: backgroundImage,
-     },
-   ];
+    {
+      bgColor: "HomeTopSectionBackgroundColor_ManInDreadsImage",
+      textColor: "text-white",
+      image: VisaImage2,
+    },
+    {
+      bgColor: "HomeTopSectionBackgroundColor_headerImage",
+      textColor: "text-secondary-main",
+      image: VisaImage3,
+    },
+    {
+      bgColor: "HomeTopSectionBackgroundColor_headerImage",
+      textColor: "text-secondary-main",
+      image: backgroundImage,
+    },
+  ];
 
-   const stepper = useStepper({ maxStep: configs.length - 1 });
+    const configs2 = [
+      //  {
+      //    bgColor: "HomeTopSectionBackgroundColor_WomanInRedImage",
+      //    textColor: "text-secondary-main",
+      //    image: VisaImage1,
+      //  },
+      {
+        bgColor: "HomeTopSectionBackgroundColor_ManInDreadsImage",
+        textColor: "text-white",
+        image: VisaImage2,
+      },
+      {
+        bgColor: "HomeTopSectionBackgroundColor_headerImage",
+        textColor: "text-secondary-main",
+        image: VisaImage3,
+      },
+      {
+        bgColor: "HomeTopSectionBackgroundColor_headerImage",
+        textColor: "text-secondary-main",
+        image: backgroundImage,
+      },
+    ];
 
-   const config = configs[stepper.step];
 
-   const dataRef = useDataRef({ stepper });
+  const stepper = useStepper({ maxStep: configs.length - 1 });
 
-   useEffect(() => {
-     const intervalId = setInterval(() => {
-       if (dataRef.current.stepper.canNextStep()) {
-         dataRef.current.stepper.nextStep();
-       } else {
-         dataRef.current.stepper.reset();
-       }
-     }, 1000 * 5);
-     return () => {
-       clearInterval(intervalId);
-     };
-   }, [dataRef]);
-  
+  const config = configs[stepper.step];
+
+  const dataRef = useDataRef({ stepper });
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (dataRef.current.stepper.canNextStep()) {
+        dataRef.current.stepper.nextStep();
+      } else {
+        dataRef.current.stepper.reset();
+      }
+    }, 1000 * 5);
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [dataRef]);
+
   return (
     <div className="pb-16  ">
       <Header underlined="coaching" />
@@ -68,10 +95,10 @@ const Coaching = () => {
         }}
       >
         <div
-          style={{ display: configs.length - 1 == stepper.step && "none" }}
+          style={{ display:(ismd && configs.length - 1 == stepper.step) && "none" }}
           className="absolute  w-full"
         >
-          <div className=" w-full px-[10%] py-[20%]  justify-between font-extrabold text-primary-main text-base">
+          <div className=" w-full px-[10%] py-[300px] flex items-center md:justify-between font-extrabold text-primary-main text-base">
             <Typography className="font-extrabold" variant="h2">
               IELTS CRASH COURSE
             </Typography>
@@ -92,7 +119,7 @@ const Coaching = () => {
         >
           What You Should Know Before Your Journey Starts
         </Typography>
-        <div className="flex items-start gap-2 mb-4">
+        <div className="flex md:flex-row flex-col items-start gap-2 mb-4">
           {/* <div
             style={{
               background: `url('${VisaImage}')`,

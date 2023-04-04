@@ -12,15 +12,15 @@ const Visa = () => {
     <div>
       <Header underlined="visa" />
 
-      <div className=" h-[260] w-100 p-5  px-[15%] ">
+      <div className=" h-[260] w-100 p-5 pt-12  md:px-[15%] ">
         <Typography
           className="my-16 text-center font-extrabold text-primary-main"
           variant="h4"
         >
           Have You Asked The "WHY QUESTION?"
         </Typography>
-        <div className="flex items-start gap-4 mb-4">
-          <div className=" w-[600px] h-[350px]">
+        <div className="flex md:flex-row flex-col items-start gap-4 mb-4">
+          <div className=" md:w-[600px] md:h-[350px]">
             <img className="w-full h-full" src={VisaImage2} />
           </div>
           <div className="w-full  border-3 text-base">
@@ -45,11 +45,11 @@ const Visa = () => {
           Before your start your joining or travelling to a country, either for
           schooling, visiting, tourist or immigration purposes you should ask
           yourself this question.
-          <ul className="flex-col flex gap-3 mt-3 px-20 font-bold list-disc">
+          <ul className="flex-col flex gap-3 mt-3 md:px-20 ml-7 font-bold list-disc">
             <li>
-              Am you ready to start life afresh basically for those studying and
-              those processing for immigration? Imagine leaving all you have in
-              a country and starting a new life in a different country. Also,
+              Are you ready to start life afresh basically for those studying
+              and those processing for immigration? Imagine leaving all you have
+              in a country and starting a new life in a different country. Also,
               ask yourself,
             </li>
             <li>Do I have the financial strength to pursue such a process?</li>
@@ -72,7 +72,7 @@ const Visa = () => {
                 applying for. This Visas can be classified into Temporary and
                 Permanent Visas. For more information click below
               </Typography>
-              <ul className="flex-col flex gap-3 mt-3 px-20 font-bold list-disc text-base">
+              <ul className="flex-col flex gap-3 mt-3 md:px-20  ml-7 font-bold list-disc text-base">
                 <Link
                   to="/temporal-visa"
                   className="hover:text-primary-main hover:cursor-pointer"
@@ -109,7 +109,7 @@ const Visa = () => {
           </div>
         </div>
       </div>
-    
+
       <Footer />
     </div>
   );

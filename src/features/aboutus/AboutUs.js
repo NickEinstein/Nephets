@@ -82,14 +82,14 @@ function AboutUs() {
           //   }}
         >
           <Header underlined="about" />
-          <div className="h-[260px] ">
+          <div className="md:h-[260px] py-14">
             <img src={AboutImage} />
           </div>
 
-          <div class="w-full flex justify-center ">
-            <div className="text-center py-8 px-10 w-3/5 border bg-white rounded-lg">
+          <div class="w-full flex justify-center pb-8">
+            <div className="md:text-center md:py-8 md:px-10 md:w-3/5 px-2 mx-3 border bg-white rounded-lg">
               <Typography
-                className="my-6 font-bold text-primary-main"
+                className="my-6 font-bold text-primary-main text-center"
                 variant="h4"
               >
                 What We Do

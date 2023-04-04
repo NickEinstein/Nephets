@@ -37,7 +37,7 @@ const HomeUsersCard = () => {
   const [open, setOpen] = useState(false);
   const pay = async () => {
     let payload = {
-      amount: 50000,
+      amount: 20000,
         
       email: formdata.email,
       firstName: formdata.firstName,
@@ -599,7 +599,7 @@ const HomeUsersCard = () => {
                       </div>
                       <div class="flex gap-6">
                         <TextField
-                          value={`${50000} naira`}
+                          value={`${20000} naira`}
                           disabled
                           className="w-full"
                           id="outlined-basic"

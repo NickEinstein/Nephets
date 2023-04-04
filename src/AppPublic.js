@@ -3,11 +3,25 @@ import Suspense from "common/Suspense";
 import { Navigate, useRoutes } from "react-router-dom";
 import { configureRoutes } from "utils/RouteUtils";
 import { RouteEnum } from "constants/RouteConstants";
+import Sidebar from "features/sidebar/Sidebar";
+import { useState } from "react";
+import Header from "features/header/header";
 
 function AppPublic() {
   const routes = useRoutes(ROUTES);
+const [isOpen, setIsOpen] = useState(false);
 
-  return <Suspense>{routes}</Suspense>;
+const handleToggleSidebar = () => {
+  setIsOpen(!isOpen);
+};
+  return (
+    <div className="">
+
+      {/* {isOpen&&<Sidebar/>} */}
+      <Header/>
+      <Suspense>{routes}</Suspense>
+    </div>
+  );
 }
 
 const ROUTES = configureRoutes([

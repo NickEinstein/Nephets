@@ -9,7 +9,7 @@ import "react-multi-carousel/lib/styles.css";
 
 const HomeUsersCard = () => {
   return (
-    <div className="bg-[#AB0035] p-5 ">
+    <div className="bg-[#AB0035] p-5 border">
       <Typography className="py-8 text-center text-white" variant="h4">
         What Our Users Say About Us
       </Typography>
@@ -107,7 +107,7 @@ const HomeUsersCard = () => {
                 <Typography className="text-center" variant="h6">
                   {card.title}
                 </Typography>
-                <div className=" px-24 py-8">
+                <div className=" md:px-24 py-8">
                   <Typography variant="" className="text-base ">
                     {card.text}
                   </Typography>

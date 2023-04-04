@@ -32,29 +32,25 @@ const Footer = () => {
         // padding: "70px 60px",
         color: "white",
       }}
-      className="px-[10%] py-[60px] bg-[#AB0035] flex justify-between"
+      className="px-[10%] py-[60px] bg-[#AB0035] flex flex-col md:flex-row md:justify-between gap-16 z-50"
     >
-      <div>
+      <div className="hidden md:block">
         <img src={logo} />
         <Typography className="font-bold">
           Planning Together to Achieve your dream
         </Typography>
       </div>
-      <ul className="text-base flex flex-col gap-3">
-        <h2 style={{ fontSize: "22px", marginBottom: "30px", color: "white" }}>
-          Quick Links
-        </h2>
+      <ul className="text-base flex flex-col md:justify-start md:items-center gap-5 justify-center items-center">
+        <h2 className="text-3xl md:mb-8">Quick Links</h2>
 
-        <li> Home</li>
-        <li>Coaching</li>
-        <li>Visa</li>
-        <li>About Us</li>
+        <a className="hover:text-primary-main cursor-pointer"> Home</a>
+        <a className="hover:text-primary-main cursor-pointer">Coaching</a>
+        <a className="hover:text-primary-main cursor-pointer">Visa</a>
+        <a className="hover:text-primary-main cursor-pointer">About Us</a>
       </ul>
 
-      <ul className="text-base flex flex-col gap-3">
-        <h2 style={{ fontSize: "22px", marginBottom: "30px", color: "white" }}>
-          Contact Us
-        </h2>
+      <ul className="text-base flex flex-col md:justify-start md:items-center justify-center items-center gap-3">
+        <h2 className="text-3xl md:mb-8">Contact Us</h2>
         <li className="flex gap-3 items-center">
           <AiFillPhone /> +234 (904) 919 5599
         </li>
@@ -66,14 +62,11 @@ const Footer = () => {
         </li>
       </ul>
 
-      <ul className="text-base flex flex-col gap-3">
-        <h2 style={{ fontSize: "22px", marginBottom: "30px", color: "white" }}>
-          Social Media
-        </h2>
+      <ul className="text-base flex flex-col md:justify-start md:items-center justify-center items-center gap-3">
+        <h2 className="text-3xl md:mb-8">Social Media</h2>
 
         <div className="flex gap-4 ">
           <a href="https://instagram.com/nehpetsconsult?igshid=ZDdkNTZiNTM=">
-            {" "}
             <AiOutlineInstagram style={{ fontSize: "36px" }} />
           </a>
           <a
