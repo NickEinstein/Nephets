@@ -300,10 +300,10 @@ const CoachingForm = () => {
         >
           <DialogTitle id="alert-dialog-title"> Payment Form</DialogTitle>
           <DialogContent className="w-full ">
-            <div className="w- p-5 md:px-20 flex justify-center">
-              <div class="md:w-3/5">
+            <div className="py-5 md:px-20 flex justify-center">
+              <div class="md:w-3/5 w-full">
                 <Typography
-                  className="py-8  text-center  text-bold text-primary-main "
+                  className="py-8 text-center  text-bold text-primary-main "
                   variant="h5"
                 >
                   You are Paying For {formdata.purpose}
@@ -318,11 +318,11 @@ const CoachingForm = () => {
                   noValidate
                   autoComplete="off"
                 >
-                  {/* : " ", : " ", : " ", : " ", : " ", : " ", : " ", : " ", tutorial: "
-            ", studyMaterials: " ", consultation: " ", : " ", */}
-                  <div class="flex gap-6">
+                
+                  <div class="flex flex-col md:flex-row gap-6">
                     <TextField
                       disabled
+                      fullWidth
                       value={formdata.firstName}
                       id="outlined-basic"
                       label="First Name"
@@ -342,7 +342,7 @@ const CoachingForm = () => {
                       name="lastName"
                     />
                   </div>
-                  <div class="flex gap-6">
+                  <div class="flex gap-6 flex-col md:flex-row ">
                     <TextField
                       value={`${paydata.amount} naira`}
                       disabled

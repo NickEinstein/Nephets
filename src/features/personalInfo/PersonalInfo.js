@@ -557,9 +557,9 @@ const HomeUsersCard = () => {
               className=""
             >
               <DialogTitle id="alert-dialog-title"> Payment Form</DialogTitle>
-              <DialogContent className="w-full ">
-                <div className="w- p-5 md:px-20 flex justify-center">
-                  <div class="w-3/5">
+              <DialogContent className="md:w-full ">
+                <div className="md:p-5 md:px-20 flex justify-center ">
+                  <div class="md:w-3/5 w-full ">
                     <Typography
                       className="py-8  text-center  text-bold text-primary-main "
                       variant="h5"
@@ -576,7 +576,7 @@ const HomeUsersCard = () => {
                       noValidate
                       autoComplete="off"
                     >
-                      <div class="flex gap-6">
+                      <div class="flex gap-6 flex-col md:flex-row ">
                         <TextField
                           disabled
                           value={formdata.firstName}
@@ -598,7 +598,7 @@ const HomeUsersCard = () => {
                           name="lastName"
                         />
                       </div>
-                      <div class="flex gap-6">
+                      <div class="flex gap-6 flex-col md:flex-row ">
                         <TextField
                           value={`${20000} naira`}
                           disabled
@@ -626,7 +626,7 @@ const HomeUsersCard = () => {
                         <div className="flex-between">
                           <DatePicker
                             fullWidth
-                            className=" mr-8 w-full"
+                            className=" md:mr-8 w-full"
                             label="Appointment Date"
                             value={start_date}
                             onChange={(newValue) => {
