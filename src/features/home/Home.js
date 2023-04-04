@@ -10,6 +10,7 @@ import {
   Paper,
   Icon,
   Button,
+  useMediaQuery,
 } from "@mui/material";
 import home1Image from "../../assets/nehpets/NehpetsHome.jpg";
 import home2Image from "../../assets/nehpets/Tourist.jpg";
@@ -40,10 +41,13 @@ import cardImage2 from "../../assets/nehpets/LinkCard_two.svg";
 import HomeWhyChooseUs from "./HomeWhyChooseUs";
 import { Link } from "react-router-dom";
 import Footer from "common/Footer";
+  import { MediaQueryBreakpointEnum } from "constants/Global";
 
 
 
 function Home() {
+  const ismd = useMediaQuery(MediaQueryBreakpointEnum.md);
+
    const configs = [
      {
        bgColor: "HomeTopSectionBackgroundColor_WomanInRedImage",
@@ -67,7 +71,32 @@ function Home() {
      },
    ];
 
-   const stepper = useStepper({ maxStep: configs.length - 1 });
+     const configsMobile = [
+       {
+         bgColor: "HomeTopSectionBackgroundColor_WomanInRedImage",
+         textColor: "text-secondary-main",
+         image: home1Image,
+       },
+       {
+         bgColor: "HomeTopSectionBackgroundColor_ManInDreadsImage",
+         textColor: "text-white",
+         image: home2Image,
+       },
+       {
+         bgColor: "HomeTopSectionBackgroundColor_headerImage",
+         textColor: "text-secondary-main",
+         image: home3Image,
+       },
+      //  {
+      //    bgColor: "HomeTopSectionBackgroundColor_headerImage",
+      //    textColor: "text-secondary-main",
+      //    image: backgroundImage,
+      //  },
+     ];
+
+   const stepper = useStepper({
+     maxStep: ismd ? configs.length - 1 : configs.length - 2,
+   });
 
    const config = configs[stepper.step];
 
@@ -85,18 +114,20 @@ function Home() {
        clearInterval(intervalId);
      };
    }, [dataRef]);
-  
+
   return (
     <>
       <div className="">
         <div
-          className="h-screen "
+          className="h-screen md:block"
           style={{
-            background: `url('${configs[stepper.step].image}')`,
+            background: ismd && `url('${configs[stepper.step].image}')`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
           }}
         >
+          <img className="h-screen absolute top-0 -z-20 w-full" src={configs[stepper.step].image} />
+
           {/* <div className="self-stretch w-1/2 hidden md:flex items-end">
             <div className="relative w-full" style={{ height: 620 }}>
               {configs.map((step, index) => (
@@ -113,8 +144,8 @@ function Home() {
           </div> */}
           {/* <Header step={stepper.step} underlined="home" /> */}
 
-          <div className="px-[10%] ">
-            <div className="py-32 md:w-2/5 text-white ">
+          <div className="px-[10%] z-10 ">
+            <div className="md:py-64 py-44 md:w-2/5 text-white ">
               <Typography variant="h4">
                 Immigration & Visa Consultant Agent
               </Typography>

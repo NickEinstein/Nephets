@@ -18,11 +18,35 @@ const Coaching = () => {
   const ismd = useMediaQuery(MediaQueryBreakpointEnum.md);
 
   const configs = [
-    //  {
-    //    bgColor: "HomeTopSectionBackgroundColor_WomanInRedImage",
-    //    textColor: "text-secondary-main",
-    //    image: VisaImage1,
-    //  },
+    {
+      bgColor: "HomeTopSectionBackgroundColor_ManInDreadsImage",
+      textColor: "text-white",
+      image: VisaImage2,
+    },
+    {
+      bgColor: "HomeTopSectionBackgroundColor_headerImage",
+      textColor: "text-secondary-main",
+      image: VisaImage3,
+    },
+
+    {
+      bgColor: "HomeTopSectionBackgroundColor_headerImage",
+      textColor: "text-secondary-main",
+      image: backgroundImage,
+    },
+    {
+      bgColor: "HomeTopSectionBackgroundColor_WomanInRedImage",
+      textColor: "text-secondary-main",
+      image: VisaImage1,
+    },
+  ];
+
+  const configs2 = [
+     {
+       bgColor: "HomeTopSectionBackgroundColor_WomanInRedImage",
+       textColor: "text-secondary-main",
+       image: VisaImage1,
+     },
     {
       bgColor: "HomeTopSectionBackgroundColor_ManInDreadsImage",
       textColor: "text-white",
@@ -40,31 +64,9 @@ const Coaching = () => {
     },
   ];
 
-    const configs2 = [
-      //  {
-      //    bgColor: "HomeTopSectionBackgroundColor_WomanInRedImage",
-      //    textColor: "text-secondary-main",
-      //    image: VisaImage1,
-      //  },
-      {
-        bgColor: "HomeTopSectionBackgroundColor_ManInDreadsImage",
-        textColor: "text-white",
-        image: VisaImage2,
-      },
-      {
-        bgColor: "HomeTopSectionBackgroundColor_headerImage",
-        textColor: "text-secondary-main",
-        image: VisaImage3,
-      },
-      {
-        bgColor: "HomeTopSectionBackgroundColor_headerImage",
-        textColor: "text-secondary-main",
-        image: backgroundImage,
-      },
-    ];
-
-
-  const stepper = useStepper({ maxStep: configs.length - 1 });
+  const stepper = useStepper({
+    maxStep: ismd ? configs.length - 2 : configs.length - 2,
+  });
 
   const config = configs[stepper.step];
 
@@ -89,13 +91,15 @@ const Coaching = () => {
       <div
         className="h-screen relative"
         style={{
-          background: `url('${configs[stepper.step].image}')`,
+          background: ismd && `url('${configs[stepper.step].image}')`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
       >
         <div
-          style={{ display:(ismd && configs.length - 1 == stepper.step) && "none" }}
+          style={{
+            display: ismd && configs.length - 2 == stepper.step && "none",
+          }}
           className="absolute  w-full"
         >
           <div className=" w-full px-[10%] py-[300px] flex items-center md:justify-between font-extrabold text-primary-main text-base">
@@ -112,6 +116,16 @@ const Coaching = () => {
           </div>
         </div>
       </div>
+
+      <img
+        className="h-screen absolute top-0 -z-20 w-full"
+        src={
+          configs.length - 2 == stepper.step
+            ? configs[stepper.step+1].image
+            : configs[stepper.step].image
+        }
+      />
+
       <div className="px-[10%]">
         <Typography
           className="my-16 text-center font-semibold text-primary-main"
