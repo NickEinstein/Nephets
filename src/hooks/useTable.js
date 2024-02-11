@@ -13,10 +13,9 @@ import {
 function useTable(options) {
   return useReactTable({
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
+    // getPaginationRowModel: getPaginationRowModel(),
     debugTable: true,
     ...options,
-    data: options.data || data,
     defaultColumn: {
       // cell: (info) => <Typography>{info.getValue()}</Typography>,
       ...options?.defaultColumn,
@@ -25,5 +24,3 @@ function useTable(options) {
 }
 
 export default useTable;
-
-const data = [];

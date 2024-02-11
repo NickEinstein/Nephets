@@ -124,11 +124,3 @@ export function objectToFormData(data) {
   }
   return fd;
 }
-
-export function normalizeArray(array, options = {}) {
-  const { getId = ({ id }) => id } = options;
-  return array?.reduce((acc, curr) => {
-    acc[getId(curr)] = curr;
-    return acc;
-  }, {});
-}

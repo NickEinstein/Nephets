@@ -10,7 +10,7 @@ export const CurrencyTypography = forwardRef(
    */
   (props, ref) => {
     const { children, currency, ...rest } = props;
-    const _currency = CurrencyEnum[currency || "GBP"] || CurrencyEnum.GBP;
+    const _currency = CurrencyEnum[currency || "NG"] || CurrencyEnum.NG;
 
     return (
       <Typography ref={ref} {...rest}>
@@ -21,7 +21,7 @@ export const CurrencyTypography = forwardRef(
 );
 
 CurrencyTypography.defaultProps = {
-  currency: "GBP",
+  currency: "NG",
 };
 
 export default CurrencyTypography;

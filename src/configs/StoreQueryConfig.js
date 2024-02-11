@@ -1,35 +1,16 @@
 import axios from "axios";
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { SoftworkHttp, CloudinaryHttp } from "./HttpConfig";
+import { SoftworkHttp } from "./HttpConfig";
 import { StoreQueryTagEnum } from "constants/StoreConstants";
-import { objectToFormData } from "utils/ObjectUtils";
 
 export const SoftwrkApi = createApi({
-  reducerPath: "softwrk",
+  reducerPath: "test",
   baseQuery: axiosBaseQuery({}, SoftworkHttp),
   endpoints: (builder) => ({}),
 });
 
-export const CloudinaryApi = createApi({
-  reducerPath: "cloudinary",
-  baseQuery: axiosBaseQuery({}, CloudinaryHttp),
-  endpoints: (builder) => ({
-    upload: builder.mutation({
-      query: ({ data, ...config }) => {
-        const { cloud_name, resource_type, ..._data } = data;
-        return {
-          url: `${cloud_name}/${resource_type || "auto"}/upload`,
-          method: "POST",
-          data: objectToFormData(_data),
-          ...config,
-        };
-      },
-    }),
-  }),
-});
-
-[SoftwrkApi, CloudinaryApi].forEach((api) => {
-  api.enhanceEndpoints({ addTagTypes: Object.values(StoreQueryTagEnum) });
+[SoftwrkApi].forEach((api) => {
+  api.enhanceEndpoints({ addTagTypes: Object?.values(StoreQueryTagEnum) });
 });
 
 /**
@@ -49,6 +30,7 @@ export function axiosBaseQuery(baseConfig = {}, http = axios) {
       : baseConfig.url;
     try {
       const response = await http.request({ ...baseConfig, ...config, url });
+      // console.log(response)
 
       return {
         ...response,

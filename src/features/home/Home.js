@@ -1,256 +1,201 @@
-import HomeSection from "./HomeSection";
-import {
-  Typography,
-  Container,
-  Toolbar,
-  Tabs,
-  Tab,
-  Collapse,
-  Fade,
-  Paper,
-  Icon,
-  Button,
-  useMediaQuery,
-} from "@mui/material";
-import home1Image from "../../assets/nehpets/NehpetsHome.jpg";
-import home2Image from "../../assets/nehpets/Tourist.jpg";
-import home3Image from "../../assets/nehpets/NehpetsHome3.jpg";
-import { useEffect, useMemo, useRef, useState } from "react";
-// import "./HomeTopSectionBackgroundColor.css";
-import CategoryApi from "apis/CategoryApi";
-import useStepper from "hooks/useStepper";
-import useDataRef from "hooks/useDataRef";
-import VideoPreviewer from "common/VideoPreviewer";
-import { RouteEnum } from "constants/RouteConstants";
-import { UserTypeEnum } from "constants/Global";
-import ProjectApi from "apis/ProjectApi";
-import ProjectCard from "common/ProjectCard";
-import Header from 'features/header/header'
-import backgroundImage from "../../assets/nehpets/HomePage_backgroundImage.svg";
-import LinkCard from "features/home/Links";
-import yellowBallImage from "../../assets/nehpets/yellowBall.svg";
-import yellowBallSmallImage from "../../assets/nehpets/yellowSmall.svg";
-import ashBallImage from "../../assets/nehpets/ashBall.svg";
-import maroonBallImage from "../../assets/nehpets/maroonBall.svg";
-import ashBallSmallImage from "../../assets/nehpets/ashballsmall.svg";
-import chinesesgirlsImage from "../../assets/nehpets/HomePage_Section2.svg";
-import africanChildred from "../../assets/nehpets/HomePageChildrenReplacement.jpg";
-import HomeUsersCard from "./HomeUsersCard";
-import cardImage from "../../assets/nehpets/LinkCard_one.svg";
-import cardImage2 from "../../assets/nehpets/LinkCard_two.svg";
-import HomeWhyChooseUs from "./HomeWhyChooseUs";
-import { Link } from "react-router-dom";
-import Footer from "common/Footer";
-  import { MediaQueryBreakpointEnum } from "constants/Global";
+import React, { useState } from "react";
+import LoginAPi from "apis/LoginApi";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import { useSnackbar } from "notistack";
 
+import snake from "images/Nephets Assets/BackDrop.svg";
+import finegirlImage from "images/Nephets Assets/ImageFinegirl.svg";
 
+import { Button, Paper, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import WallCards from "common/CompanyRiderCard";
+import WallCardsServices from "common/WallCardsServices";
+import WallCardsTestimonies from "common/WallCardsTestimonies";
+import IELTS from "images/Nephets Assets/OurServices-IELTS.png";
+import Immigration from "images/Nephets Assets/ImmigrationImage.svg";
+import visa from "images/Nephets Assets/VisaImage.svg";
+import travel from "images/Nephets Assets/TravelImage.svg";
 
-function Home() {
-  const ismd = useMediaQuery(MediaQueryBreakpointEnum.md);
+function Home({ bgimage }) {
+  const [isLoading, setIsLoading] = React.useState(false);
 
-   const configs = [
-     {
-       bgColor: "HomeTopSectionBackgroundColor_WomanInRedImage",
-       textColor: "text-secondary-main",
-       image: home1Image,
-     },
-     {
-       bgColor: "HomeTopSectionBackgroundColor_ManInDreadsImage",
-       textColor: "text-white",
-       image: home2Image,
-     },
-     {
-       bgColor: "HomeTopSectionBackgroundColor_headerImage",
-       textColor: "text-secondary-main",
-       image: home3Image,
-     },
-     {
-       bgColor: "HomeTopSectionBackgroundColor_headerImage",
-       textColor: "text-secondary-main",
-       image: backgroundImage,
-     },
-   ];
+  const history = useNavigate();
 
-     const configsMobile = [
-       {
-         bgColor: "HomeTopSectionBackgroundColor_WomanInRedImage",
-         textColor: "text-secondary-main",
-         image: home1Image,
-       },
-       {
-         bgColor: "HomeTopSectionBackgroundColor_ManInDreadsImage",
-         textColor: "text-white",
-         image: home2Image,
-       },
-       {
-         bgColor: "HomeTopSectionBackgroundColor_headerImage",
-         textColor: "text-secondary-main",
-         image: home3Image,
-       },
-      //  {
-      //    bgColor: "HomeTopSectionBackgroundColor_headerImage",
-      //    textColor: "text-secondary-main",
-      //    image: backgroundImage,
-      //  },
-     ];
+  const redirect = () => {
+    history("/dashboard");
+  };
 
-   const stepper = useStepper({
-     maxStep: ismd ? configs.length - 1 : configs.length - 2,
-   });
+  const { enqueueSnackbar } = useSnackbar();
+  const [loginMuation, loginMutationResult] = LoginAPi.useLoginMutation();
 
-   const config = configs[stepper.step];
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+    },
 
-   const dataRef = useDataRef({ stepper });
+    validationSchema: yup.object({
+      username: yup.string().trim().required(),
+      password: yup.string().trim().required(),
+    }),
+    onSubmit: async (values) => {
+      console.log(values);
+      localStorage.setItem("il", true);
+      // redirect();
+      // history('/dashboard')
 
-   useEffect(() => {
-     const intervalId = setInterval(() => {
-       if (dataRef.current.stepper.canNextStep()) {
-         dataRef.current.stepper.nextStep();
-       } else {
-         dataRef.current.stepper.reset();
-       }
-     }, 1000 * 5);
-     return () => {
-       clearInterval(intervalId);
-     };
-   }, [dataRef]);
+      try {
+        setIsLoading(true);
+        const data = await loginMuation({ data: values }).unwrap();
+        // TODO extra login
+        setIsLoading(false);
+        if (data.data)
+          enqueueSnackbar("Logged in successful", { variant: "success" });
+        redirect();
+      } catch (error) {
+        setIsLoading(false);
+
+        enqueueSnackbar(
+          error?.data?.message || "Something went wrong",
+          "Failed to login",
+          {
+            variant: "error",
+          }
+        );
+      }
+    },
+  });
 
   return (
-    <>
-      <div className="">
-        <div
-          className="h-screen md:block"
-          style={{
-            background: ismd && `url('${configs[stepper.step].image}')`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
-          <img className="h-screen absolute top-0 -z-20 w-full" src={configs[stepper.step].image} />
+    <div className=" w-full bg-black">
+      <div
+        className="relative bg-no-repeat border bg-center bg-cover lg:h-[530px] px-[6%] box-border text-white w-full flex flex-col items-end justify-end lg:px-[3%] lg:pb-[5%]"
+        style={{
+          position: "relative",
+          backgroundImage: `url('${snake}')`,
+        }}
+      >
+        <div className="flex flex-col justify-start lg:flex-row lg:gap-16 py-[20%] lg:py-0 lg:items-end items-center lg:justify-end w-full">
+          <Typography
+            variant="h1"
+            className="font-bold text-[32px] text-left  lg:text-[6.42em] lg:text-right "
+          >
+            Immigration & Visa Consultant Agent
+          </Typography>
 
-          {/* <div className="self-stretch w-1/2 hidden md:flex items-end">
-            <div className="relative w-full" style={{ height: 620 }}>
-              {configs.map((step, index) => (
-                <Fade
-                  key={index}
-                  in={stepper.step === index}
-                  timeout={500}
-                  className="absolute block top-0 w-full h-full "
-                >
-                  <img alt={index} src={step.image} />
-                </Fade>
-              ))}
-            </div>
-          </div> */}
-          {/* <Header step={stepper.step} underlined="home" /> */}
-
-          <div className="px-[10%] z-10 ">
-            <div className="md:py-64 py-44 md:w-2/5 text-white ">
-              <Typography variant="h4">
-                Immigration & Visa Consultant Agent
-              </Typography>
-              <Typography className="mt-8 mb-4 text-white " variant="h5">
-                Planning together to achieve your dream
-              </Typography>
-              <Link to="/personal-info">
-                <Button>Book Now</Button>
-              </Link>
-            </div>
+          <div className="lg:w-2/12  min-w-[269px] w-full">
+            <Typography className="text-[14px] hidden md:block">
+              Planning together to achieve your japa dreams. We work wirh you to
+              achieve your dreams of traveling abroad.
+            </Typography>
+            <Typography className="text-[14px] mt-5 md:hidden">
+              Planning together to achieve your japa dreams.
+              <br /> We work wirh you to achieve
+              <br /> your dreams of traveling abroad.
+            </Typography>
+            <Button className="rounded-full h-12 px-12 mt-8 mb-3">
+              Book Now
+            </Button>
           </div>
         </div>
-
-        <div class="relative">
-          <div class="w-full absolute md:-top-[70px] -top-[200px] z-50 md:z-10">
-            <div class="flex justify-around">
-              <LinkCard
-                to="/visa"
-                text="Apply For Visa"
-                text2="Let's assist you"
-                cardImage={cardImage}
-              />
-              <LinkCard
-                to="/coaching"
-                text="Start a Course"
-                text2="Register for IELTS"
-                cardImage={cardImage2}
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="relative w-full h-[500px] p-[3%]">
-          <img
-            className="absolute hidden md:block right-[7%] top-9 w-40 -z-10"
-            src={ashBallImage}
-          />
-
-          <div className="relative w-100  px-[23%] pl-[12%] flex mt-20">
-            <div className="relative w-full hidden md:block ">
-              <img
-                class="w-[260px] hidden md:block h-[230px] z-20 absolute left-0"
-                src={africanChildred}
-              />
-              {/* <img
-                class="absolute w-[260px] h-[260px] top-[100px] left-[215px]"
-                src={chinesesgirlsImage}
-              /> */}
-              <img
-                class="w-12 hidden md:block absolute top-[30px] left-[300px]"
-                src={yellowBallImage}
-              />
-              <img
-                class="w-20 hidden md:block absolute top-[190px] -z-10 -left-6"
-                src={yellowBallImage}
-              />
-              {/* <div
-                class="w-24 h-24 rounded-full text-white flex flex-col items-center justify-center absolute text-[11px] top-[250px] z-10 left-[220px] bg-[#AB0035]"
-                // src={maroonBallImage}
-              >
-                <Typography className="">200+</Typography>
-                <Typography className="">completed</Typography>
-                <Typography className=""> visas</Typography>
-              </div> */}
-
-              {/* <img
-                  class="w-40 absolute top-[60%] left-[8%]"
-                  src={yellowBallImage}
-                />
-                <img class="w-40" src={yellowBallSmallImage} /> */}
-            </div>
-            <div className="relative md:w-[550px] my-20 md:my-0 w-full">
-              <img className="w-80 hidden md:block" src={ashBallImage} />
-              <div className="absolute w-[300px] md:left-5 md:top-10 top-4">
-                <Typography
-                  className="my-3 mb-6 w-full font-extrabold text-center"
-                  variant="h4"
-                >
-                  Get coached by experienced tutors
-                </Typography>
-                <Typography className="my3 font-semibold text-base" variant="">
-                  We’ve been coaching and registering students for IELTS exams
-                  for educational opportunities in foreign countries
-                </Typography>
-                <Link
-                  to="/coaching-form"
-                  className=" md:left-[50px] flex md:mt-12 mt-4 mr-5 w-full justify-center"
-                >
-                  <Button className="w-32">Enroll </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Section 3 */}
-        <div className="mt-20">
-          <HomeUsersCard />
-        </div>
-
-        {/* Section 4 */}
-        <HomeWhyChooseUs />
-
-        <Footer />
       </div>
-    </>
+      <div className="bg-[#FCF9EE] px-[6%] py-[10%] lg:px-[40px] lg:py-[80px]">
+        <Typography className="lg:text-[64px] text-[24px] leading-6 lg:leading-normal">
+          At Nehpets Consulting, we are more than just a consultancy—we are your
+          dedicated channel to success in the world of Canadian immigration.{" "}
+        </Typography>
+        <div class="grid lg:grid-cols-4 mt-4 grid-cols-1 justify-between gap-4">
+          <WallCards number="250+" type="Visas" />
+          <WallCards number="250+" type="IELTS" />
+          <WallCards number="250+" type="Students" />
+          <WallCards number="250+" type="Coaches" />
+          {/* <WallCards /> */}
+        </div>
+
+        <div>
+          <Typography className="font-bold lg:text-[88px] text-[32px] text-left lg:mb-12 mb-6 lg:mt-28 mt-[12%] ">
+            Our Services
+          </Typography>
+          <div class="grid lg:grid-cols-5 grid-cols-1 gap-8 w-full">
+            <div  className="lg:col-span-2 col-span-1 w-full rounded-3xl"
+              style={{
+                position: "relative",
+                backgroundImage: `url('${IELTS}')`,
+              }}>
+              <WallCardsServices
+                bgImage={IELTS}
+                title="IELTS"
+                text=" The International English Language Testing System (IELTS) is an exam that is been done on a weekly or bi-weekly basis across different countries, Which is designed to help you work, study or migrate to a country where English is the native language. LEARN MORE…"
+              />
+            </div>
+
+            <Paper  className="lg:col-span-3 col-span-1 w-full rounded-3xl relative bg-no-repeat bg-center bg-cover "
+              style={{
+                position: "relative",
+                backgroundImage: `url('${Immigration}')`,
+              }}>
+              <WallCardsServices
+                bgImage={Immigration}
+                title="IMMIGRATION"
+                text="Navigating immigration and visa processes is a substantial endeavor that demands thorough assessment before taking any steps. Within this pivotal phase, it is crucial to inquire about fundamental aspects, including the various types of visas available. LEARN MORE…"
+              />
+            </Paper>
+          </div>
+
+          <div class="grid lg:grid-cols-5 grid-cols-1 gap-8 w-full lg:mt-12 mt-6">
+            <Paper  className="lg:col-span-2 col-span-1 w-full rounded-3xl"
+              style={{
+                position: "relative",
+                backgroundImage: `url('${travel}')`,
+              }}>
+              <WallCardsServices
+                bgImage={travel}
+                title="TRAVEL"
+                text="Embarking on travel or leaving your country is a significant undertaking that requires careful consideration. During this crucial phase, it's essential to pose fundamental questions to yourself, a stage I refer to as the evaluation phase. LEARN MORE"
+              />
+            </Paper>
+
+            <Paper
+              className="lg:col-span-3 col-span-1 w-full rounded-3xl relative bg-no-repeat bg-center bg-cover "
+              style={{
+                position: "relative",
+                backgroundImage: `url('${visa}')`,
+              }}
+            >
+              <WallCardsServices
+                bgImage={visa}
+                title="EFFICIENT VISA SERVICE"
+                text="Get your visa and travel in less than 6 months"
+              />
+            </Paper>
+          </div>
+        </div>
+
+        <div className="lg:mx-[40px] lg:my-[80px] my-[15%] flex flex-col justify-center items-start gap-8 bg-[#662817] text-white py-[24%] px-[6%] rounded-[48px]">
+          <Typography className="lg:text-8xl lg:leading-[90px] text-[34px] leading-[38px]">
+            Get coached by experienced tutors
+          </Typography>
+          <Typography className="lg:text-base text-[14px] lg:w-2/5 w-full">
+            We’ve been coaching and registering students for IELTS exams for
+            educational opportunities in foreign countri
+          </Typography>
+
+          <Button className="h-12 bg-white text-black px-12">Book Now</Button>
+        </div>
+
+        <div className="lg:mx-[40px] lg:my-[80px] flex flex-col my-[15%]  gap-8 text-black">
+          <Typography className="lg:text-[88px] font-bold lg:leading-[120px] lg:w-4/5 text-[30px] leading-[35px] w-full">
+            What our customers are saying
+          </Typography>
+          <div class="w-full grid lg:grid-cols-3 grid-cols-1 gap-6">
+            <WallCardsTestimonies avatar={finegirlImage} />
+            <WallCardsTestimonies avatar={finegirlImage} />
+            <WallCardsTestimonies avatar={finegirlImage} />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

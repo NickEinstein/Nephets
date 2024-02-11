@@ -1,125 +1,197 @@
 import { SoftwrkApi } from "configs/StoreQueryConfig";
-import { StoreQueryTagEnum } from "constants/StoreConstants";
-import { invalidatesTags, providesTags } from "utils/QueryUtils";
 
-const BASE_URL = "/api/v1/users";
+const BASE_URL = "/store";
 
 export const UserApi = SoftwrkApi.injectEndpoints({
   endpoints: (builder) => ({
-    signup: builder.mutation({
+    createProduct: builder.mutation({
       query: (config) => ({
-        url: `${BASE_URL}/signup`,
+        url: `${BASE_URL}/product`,
         method: "POST",
         ...config,
       }),
     }),
-    login: builder.mutation({
+    receiveStock: builder.mutation({
       query: (config) => ({
-        url: `${BASE_URL}/signin`,
+        url: `${BASE_URL}/receive-stock`,
         method: "POST",
         ...config,
       }),
     }),
-    checkUserAvailability: builder.mutation({
+    receiveStomaterialReturnck: builder.mutation({
       query: (config) => ({
-        url: `${BASE_URL}/availability`,
-        ...config,
-      }),
-    }),
-    verifyUser: builder.mutation({
-      query: (config) => ({
-        url: `${BASE_URL}/signup/verify`,
-        method: "POST",
-        ...config,
-      }),
-      invalidatesTags: (_, error) =>
-        error ? invalidatesTags(StoreQueryTagEnum.USER) : [],
-    }),
-    resendUserVerification: builder.mutation({
-      query: (config) => ({
-        url: `${BASE_URL}/signup/resend-verification`,
+        url: `${BASE_URL}/Material-Return`,
         method: "POST",
         ...config,
       }),
     }),
-    getUsers: builder.query({
-      query: (config) => ({
-        url: `${BASE_URL}`,
-        ...config,
-      }),
-      providesTags: (data) =>
-        data?.data ? providesTags([data?.data], StoreQueryTagEnum.USER) : [],
-    }),
-    getUser: builder.query({
-      query: ({ path, ...config }) => ({
-        url: `${BASE_URL}/${path.id}`,
-        ...config,
-      }),
-      providesTags: (data) =>
-        data?.data ? providesTags([data?.data], StoreQueryTagEnum.USER) : [],
-    }),
-    getAuthUserProfile: builder.query({
-      queryFn: (config, { getState }, ___, baseQuery) => {
-        return baseQuery({
-          url: `${BASE_URL}/${getState().global?.authUser?.id}`,
-          ...config,
-        });
+
+    getStore: builder.query({
+      query: (arg) => {
+        const { userType } = arg;
+        return {
+          url: `${BASE_URL}`,
+          method: "GET",
+          // params: { userType },
+        };
       },
-      providesTags: (data) =>
-        data?.data ? providesTags([data?.data], StoreQueryTagEnum.USER) : [],
     }),
-    updateUser: builder.mutation({
-      query: ({ path, ...config }) => ({
-        url: `${BASE_URL}/${path.id}`,
-        method: "PUT",
-        ...config,
-      }),
-      invalidatesTags: (_, error, { path }) =>
-        !error
-          ? invalidatesTags(StoreQueryTagEnum.USER, { ids: [path.id] })
-          : [],
+
+    getStoreProducts: builder.query({
+      query: (arg) => {
+        const { userType } = arg;
+        return {
+          url: `${BASE_URL}/products`,
+          method: "GET",
+          // params: { userType },
+        };
+      },
     }),
-    addUserPhoneNumber: builder.mutation({
-      query: ({ path, ...config }) => ({
-        url: `${BASE_URL}/${path.id}/phone-numbers`,
-        method: "POST",
-        ...config,
-      }),
-      invalidatesTags: (_, error, { path }) =>
-        !error
-          ? invalidatesTags(StoreQueryTagEnum.USER, { ids: [path.id] })
-          : [],
+  
+    getStoreLocations: builder.query({
+      query: (arg) => {
+        const { userType } = arg;
+        return {
+          url: `${BASE_URL}/Get-Locations`,
+          method: "GET",
+          // params: { userType },
+        };
+      },
     }),
-    resendUserPhoneNumberVerification: builder.mutation({
-      query: ({ path, ...config }) => ({
-        url: `${BASE_URL}/${path.id}/phone-numbers/resend-verification`,
-        method: "PUT",
-        ...config,
-      }),
+
+    getStoreStock: builder.query({
+      query: (arg) => {
+        const { userType } = arg;
+        return {
+          url: `${BASE_URL}/products`,
+          method: "GET",
+          // params: { userType },
+        };
+      },
     }),
-    verifyUserPhoneNumber: builder.mutation({
-      query: ({ path, ...config }) => ({
-        url: `${BASE_URL}/${path.id}/phone-numbers/verify`,
-        method: "PUT",
-        ...config,
-      }),
-      invalidatesTags: (_, error, { path }) =>
-        !error
-          ? invalidatesTags(StoreQueryTagEnum.USER, { ids: [path.id] })
-          : [],
+
+    getStoreTaggingDetail: builder.query({
+      query: (arg) => {
+        const { deliveryItemId, unit } = arg;
+        return {
+          url: `${BASE_URL}/get-taggingDetail`,
+          method: "GET",
+          params: { deliveryItemId, unit },
+        };
+      },
     }),
-    removeUserPhoneNumber: builder.mutation({
-      query: ({ path, ...config }) => ({
-        url: `${BASE_URL}/${path.id}/phone-numbers`,
-        method: "DELETE",
-        ...config,
-      }),
-      invalidatesTags: (_, error, { path }) =>
-        !error
-          ? invalidatesTags(StoreQueryTagEnum.USER, { ids: [path.id] })
-          : [],
+
+    getTempStocks: builder.query({
+      query: (arg) => {
+        const { userType } = arg;
+        return {
+          url: `${BASE_URL}/Get-TmpStocks`,
+          method: "GET",
+          // params: { userType },
+        };
+      },
+    }),
+    getItemDetail: builder.query({
+      query: (arg) => {
+        const { itemId } = arg;
+        // console.log(pageNo);
+        return {
+          url: `${BASE_URL}/Get-ItemDetails/${itemId}/`,
+          method: "GET",
+          // params: { pageNo },
+        };
+      },
+    }),
+
+    getStoreStocks: builder.query({
+      query: (arg) => {
+        const { userType, pageNo } = arg;
+        return {
+          url: `${BASE_URL}/Get-Store-Stocks`,
+          method: "GET",
+          params: { userType, pageNo },
+        };
+      },
+    }),
+    getGlobalBin: builder.query({
+      query: (arg) => {
+        const { ProjectType, Location } = arg;
+        return {
+          url: `${BASE_URL}/Get-Global-Bincard`,
+          method: "GET",
+          // param nas: {  ProjectType, Location },
+        };
+      },
+    }),
+
+    getBinCard: builder.query({
+      query: (arg) => {
+        const { ProjectType, Location } = arg;
+        return {
+          url: `${BASE_URL}/Get-BinCard`,
+          method: "GET",
+          params: { ProjectType, Location },
+        };
+      },
+    }),
+
+    getAllCompanyRiders: builder.query({
+      query: (arg) => {
+        const { userType } = arg;
+        return {
+          url: `${BASE_URL}/company/getalluser`,
+          method: "GET",
+          params: { userType },
+        };
+      },
+    }),
+
+    getAllCompanyCustomers: builder.query({
+      query: (arg) => {
+        const { userType } = arg;
+        return {
+          url: `${BASE_URL}/company/getalluser`,
+          method: "GET",
+          params: { userType },
+        };
+      },
+    }),
+
+    getAllTrips: builder.query({
+      query: (arg) => {
+        // const { userType } = arg;
+        return {
+          url: `${BASE_URL}/super-admin/getAllTripRequest`,
+          method: "GET",
+          // params: { userType },
+        };
+      },
+    }),
+
+    // getAllRidersForCompany: builder.query({
+    //   query: (arg) => {
+    //     const { userId } = arg;
+    //     return {
+    //       url: `${BASE_URL}/super-admin/getallriderscompany`,
+    //       method: "GET",
+    //       params: { userId },
+    //     };
+    //   },
+    // }),
+
+    getStats: builder.query({
+      query: (arg) => {
+        // const { userType } = arg;
+        return {
+          url: `${BASE_URL}/super-admin/userStatsChart`,
+          method: "GET",
+          // params: { userType },
+        };
+      },
     }),
   }),
 });
+
+// ;
 
 export default UserApi;

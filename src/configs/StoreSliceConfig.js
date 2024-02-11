@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { logoutAction } from "./StoreActionConfig";
 import UserApi from "apis/UserApi";
-import { UserTypeEnum } from "constants/Global";
+import SignupApi from "apis/SignupApi";
 
 export const globalInitialState = {
   themeMode: "light", // 'dark'| 'light' | 'media'
@@ -21,33 +21,24 @@ const slice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(logoutAction, () => ({ ...globalInitialState }))
-      .addMatcher(
-        UserApi.endpoints.login.matchFulfilled,
-        (state, { payload }) => {
-          state.authUser = {
-            accessToken: payload.data?.access_token,
-            ...payload.data?.user,
-            isClient: payload.data?.user?.type === UserTypeEnum.CLIENT,
-            isFreelancer: payload.data?.user?.type === UserTypeEnum.FREELANCER,
-          };
-        }
-      )
-      .addMatcher(
-        UserApi.endpoints.signup.matchFulfilled,
-        (state, { payload }) => {
-          // state.authUser = {
-          //   accessToken: payload.data?.accessToken,
-          //   ...payload.data?.user,
-          // };
-        }
-      )
-      .addMatcher(
-        UserApi.endpoints.getAuthUserProfile.matchFulfilled,
-        (state, { payload }) => {
-          state.authUser = { ...state.authUser, ...payload.data };
-        }
-      ),
+      .addMatcher(UserApi.endpoints.login.matchFulfilled, (state, payload) => {
+        console.log(payload.payload)
+        state.authUser = {
+          accessToken: payload.payload.token,
+          ...payload.payload,
+        };
+
+      })
+      // .addMatcher(UserApi.endpoints.signup.matchFulfilled, (state, payload) => {
+      //   state.authUser = {
+      //     accessToken: payload.data?.accessToken,
+      //     ...payload.data?.profile,
+      //   };
+      // }),
 });
+
+        // console.log(globalInitialState);
+
 
 export const { toggleLoadingModalAction } = slice.actions;
 

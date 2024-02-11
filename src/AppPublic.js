@@ -1,25 +1,50 @@
-import { lazy } from "react";
+import { lazy, useState } from "react";
 import Suspense from "common/Suspense";
-import { Navigate, useRoutes } from "react-router-dom";
+import { Navigate, useLocation, useRoutes } from "react-router-dom";
 import { configureRoutes } from "utils/RouteUtils";
 import { RouteEnum } from "constants/RouteConstants";
+import Footer from "common/Footer";
+import LoginHeader from "common/LoginHeader";
 import Sidebar from "features/sidebar/Sidebar";
-import { useState } from "react";
-import Header from "features/header/header";
+import Menu from "@mui/icons-material/Menu";
+import { MediaQueryBreakpointEnum } from "constants/Global";
+import { useMediaQuery } from "@mui/material";
+import nephets from "images/Nephets Assets/Nehpets Consulting Grey Outline 1.svg";
+import nephetsColored from "images/Nephets Assets/Nehpets Consulting Colored.svg";
 
 function AppPublic() {
-  const routes = useRoutes(ROUTES);
-const [isOpen, setIsOpen] = useState(false);
+  const islg = useMediaQuery(MediaQueryBreakpointEnum.lg);
+  const ismd = useMediaQuery(MediaQueryBreakpointEnum.md);
+  const issm = useMediaQuery(MediaQueryBreakpointEnum.sm);
+  const [isOpen, setIsOpen] = useState(false);
 
-const handleToggleSidebar = () => {
-  setIsOpen(!isOpen);
-};
+  const location = useLocation();
+  const routes = useRoutes(ROUTES);
+
+  const handleToggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <div className="">
+      {/* {!issm && (
+        <div className={`${location.pathname === "/ielts" ? 'bg-white flex justify-between fixed top-0 z-20 p-2 w-full px-[6%] pb-0 ' : "pb-0 bg-[#662817] p-2 flex justify-between fixed top-0 z-20 w-full px-[6%]"}`}>
+          <img
+            className="w-16"
+            alt="Logo"
+            src={location.pathname === "/ielts" ? nephetsColored : nephets}
+          />
+          <Menu className="text-white  w-12 text-3xl" />
+        </div>
+      )} */}
+      {issm && (
+        <LoginHeader white={location.pathname === "/ielts" ? true : false} />
+      )}
+      {!issm && <Sidebar />}
 
-      {/* {isOpen&&<Sidebar/>} */}
-      <Header/>
-      <Suspense>{routes}</Suspense>
+      <div className={issm && "w-full mt-20"}>
+        <Suspense>{routes}</Suspense>;
+      </div>
+      <Footer />
     </div>
   );
 }
@@ -34,48 +59,30 @@ const ROUTES = configureRoutes([
     element: lazy(() => import("features/home/Home")),
   },
   {
-    path: RouteEnum.VISA,
-    element: lazy(() => import("features/visa/Visa")),
+    path: RouteEnum.ABOUT_US,
+    element: lazy(() => import("features/aboutUs/AboutUs")),
   },
   {
-    path: RouteEnum.ABOUT_US,
-    element: lazy(() => import("features/aboutus/AboutUs")),
+    path: RouteEnum.TEMPORAL_RESIDENCE,
+    element: lazy(() => import("features/residence/TemporalResidence")),
   },
 
+  {
+    path: RouteEnum.IELTS,
+    element: lazy(() => import("features/enrollmentForms/EnrollmentIELTS")),
+  },
   {
     path: RouteEnum.COACHING,
-    element: lazy(() => import("features/coaching/coaching")),
-  },
-
-  {
-    path: RouteEnum.PERSONALINFO,
-    element: lazy(() => import("features/personalInfo/PersonalInfo")),
+    element: lazy(() => import("features/coaching/Coaching")),
   },
   {
-    path: RouteEnum.COACHINGFORM,
-    element: lazy(() => import("features/coaching/CoachingForm")),
+    path: RouteEnum.PERMANENT_RESIDENCE,
+    element: lazy(() => import("features/residence/PermanentResidence.js")),
   },
   {
-    path: RouteEnum.TEMPORALVISA,
-    element: lazy(() => import("features/visa/TemporalResident")),
+    path: RouteEnum.VISA,
+    element: lazy(() => import("features/visa/VisaForm")),
   },
-  {
-    path: RouteEnum.PERMANENTVISA,
-    element: lazy(() => import("features/visa/PermanentResident")),
-  },
-
-  // {
-  //   path: RouteEnum.SIGNUPCLIENT,
-  //   element: lazy(() => import("features/signup/SignUpClient")),
-  // },
-  // {
-  //   path: RouteEnum.SIGNUPCLIENT,
-  //   element: lazy(() => import("features/signup/SignUpClientF")),
-  // },
-  // {
-  //   path: RouteEnum.SIGNUPCLIENTF,
-  //   element: lazy(() => import("features/signup/SignUpClientF")),
-  // },
   // {
   //   path: RouteEnum.LOGIN,
   //   element: lazy(() => import("features/login/Login")),

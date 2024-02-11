@@ -10,20 +10,20 @@ export const CurrencyTextField = forwardRef(
    */
   (props, ref) => {
     const { InputProps, code, value, onChange, onBlur, ...rest } = props;
-    const currency = CurrencyEnum[code || "GBP"];
+    const currency = CurrencyEnum[code || "NG"];
 
     return (
       <TextField
         ref={ref}
         value={value}
         onChange={(e) => {
-          // format(e.target);
+          format(e.target);
           if (onChange) {
             onChange(e);
           }
         }}
         onBlur={(e) => {
-          // format(e.target, true);
+          format(e.target, true);
           if (onBlur) {
             onBlur(e);
           }
@@ -41,7 +41,7 @@ export const CurrencyTextField = forwardRef(
 );
 
 CurrencyTextField.defaultProps = {
-  code: "GBP",
+  code: "NGN",
 };
 
 export default CurrencyTextField;

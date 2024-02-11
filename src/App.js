@@ -31,7 +31,12 @@ function App() {
         )}
       >
         <Suspense>
-          <AppPublic />
+          {
+            // !!authUser?.accessToken ?
+            //  <AppProtected />
+
+            <AppPublic />
+          }
         </Suspense>
       </SnackbarProvider>
     </AppThemeProvider>
@@ -41,4 +46,4 @@ function App() {
 export default App;
 
 const AppPublic = lazy(() => import("./AppPublic"));
-const AppProtected = lazy(() => import("./AppProtected"));
+// const AppProtected = lazy(() => import("./AppProtected"));

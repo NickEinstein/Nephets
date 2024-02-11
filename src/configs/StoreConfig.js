@@ -3,7 +3,7 @@ import { setupListeners } from "@reduxjs/toolkit/query/react";
 import { throttle } from "utils/FunctionUtils";
 import { isObjectEmpty, deepMerge } from "utils/ObjectUtils";
 import { logoutAction } from "./StoreActionConfig";
-import { SoftwrkApi, CloudinaryApi } from "./StoreQueryConfig";
+import { SoftwrkApi } from "./StoreQueryConfig";
 import globalSlice, {
   getGlobalSliceStorageState,
   globalInitialState,
@@ -12,7 +12,6 @@ import globalSlice, {
 const store = configureStore({
   reducer: {
     [SoftwrkApi.reducerPath]: SoftwrkApi.reducer,
-    [CloudinaryApi.reducerPath]: CloudinaryApi.reducer,
     [globalSlice.name]: globalSlice.reducer,
   },
   preloadedState: loadState({
@@ -21,8 +20,7 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       SoftwrkApi.middleware,
-      CloudinaryApi.middleware,
-      rtkqOnResetMiddleware(SoftwrkApi, CloudinaryApi)
+      rtkqOnResetMiddleware(SoftwrkApi)
     ),
 });
 
@@ -40,6 +38,7 @@ store.subscribe(
 export default store;
 
 function saveState(state) {
+  console.log(state)
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem("@state", serializedState);

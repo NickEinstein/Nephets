@@ -1,233 +1,122 @@
-import logo from "../../assets/nehpets/Nehpets logo 1.svg";
-import cardImage from "../../assets/nehpets/LinkCard_one.svg";
-import { Button, Divider, Typography, useMediaQuery } from "@mui/material";
-import VisaImage from "../../assets/nehpets/PictureForVisa.jpg";
-import VisaImage1 from "../../assets/nehpets/Coaching1.jpg";
-import VisaImage2 from "../../assets/nehpets/Coaching2.jpg";
-import VisaImage3 from "../../assets/nehpets/Coaching3.jpg";
-import backgroundImage from "../../assets/nehpets/NephetsCoachingBg.svg";
-import Header from "features/header/header";
-import { Link } from "react-router-dom";
-import useStepper from "hooks/useStepper";
-import useDataRef from "hooks/useDataRef";
-import { useEffect } from "react";
-import Footer from "common/Footer";
+import React, { useState } from "react";
+import LoginAPi from "apis/LoginApi";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import { useSnackbar } from "notistack";
+
+import LoginHeader from "common/LoginHeader";
+import snake from "images/Nephets Assets/coaching.svg";
+import snake2 from "images/Nephets Assets/coachingBig.svg";
+import handshake from "images/Nephets Assets/IELTSImage.svg";
+
 import { MediaQueryBreakpointEnum } from "constants/Global";
+import { useMediaQuery, Button } from "@mui/material";
 
-const Coaching = () => {
+import { Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
+function Coaching(props) {
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  const history = useNavigate();
+
+  const redirect = () => {
+    history("/dashboard");
+  };
+  const islg = useMediaQuery(MediaQueryBreakpointEnum.lg);
   const ismd = useMediaQuery(MediaQueryBreakpointEnum.md);
-
-  const configs = [
-    {
-      bgColor: "HomeTopSectionBackgroundColor_ManInDreadsImage",
-      textColor: "text-white",
-      image: VisaImage2,
-    },
-    {
-      bgColor: "HomeTopSectionBackgroundColor_headerImage",
-      textColor: "text-secondary-main",
-      image: VisaImage3,
-    },
-
-    {
-      bgColor: "HomeTopSectionBackgroundColor_headerImage",
-      textColor: "text-secondary-main",
-      image: backgroundImage,
-    },
-    {
-      bgColor: "HomeTopSectionBackgroundColor_WomanInRedImage",
-      textColor: "text-secondary-main",
-      image: VisaImage1,
-    },
-  ];
-
-  const configs2 = [
-     {
-       bgColor: "HomeTopSectionBackgroundColor_WomanInRedImage",
-       textColor: "text-secondary-main",
-       image: VisaImage1,
-     },
-    {
-      bgColor: "HomeTopSectionBackgroundColor_ManInDreadsImage",
-      textColor: "text-white",
-      image: VisaImage2,
-    },
-    {
-      bgColor: "HomeTopSectionBackgroundColor_headerImage",
-      textColor: "text-secondary-main",
-      image: VisaImage3,
-    },
-    {
-      bgColor: "HomeTopSectionBackgroundColor_headerImage",
-      textColor: "text-secondary-main",
-      image: backgroundImage,
-    },
-  ];
-
-  const stepper = useStepper({
-    maxStep: ismd ? configs.length - 2 : configs.length - 2,
-  });
-
-  const config = configs[stepper.step];
-
-  const dataRef = useDataRef({ stepper });
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      if (dataRef.current.stepper.canNextStep()) {
-        dataRef.current.stepper.nextStep();
-      } else {
-        dataRef.current.stepper.reset();
-      }
-    }, 1000 * 5);
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [dataRef]);
+  const issm = useMediaQuery(MediaQueryBreakpointEnum.sm);
 
   return (
-    <div className="pb-16  ">
-      <Header underlined="coaching" />
-      <div
-        className="h-screen relative"
-        style={{
-          background: ismd && `url('${configs[stepper.step].image}')`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div
-          style={{
-            display: ismd && configs.length - 2 == stepper.step && "none",
-          }}
-          className="absolute  w-full"
-        >
-          <div className=" w-full px-[10%] py-[300px] flex items-center md:justify-between font-extrabold text-primary-main text-base">
-            <Typography className="font-extrabold" variant="h2">
-              IELTS CRASH COURSE
-            </Typography>
-            {/* <Divider /> */}
-            {/* <Typography className="mt-4 mb-4 text-white " variant="h2">
-             NEHPETS CONSULTING
-            </Typography> */}
-            {/* <Link to="/personal-info">
-              <Button>Book Now</Button>
-            </Link> */}
-          </div>
-        </div>
-      </div>
+    <div className=" w-full bg-black ">
+      <div className="relative bg-no-repeat bg-[#662817] bg-cover max-h-[810px] box-border text-white w-full flex flex-col lg:px-10 p-[6%] py-8 pt-12 lg:pb-10  lg:pt-40 ">
+        <div className="flex flex-col lg:flex-row lg:gap-16 gap-6 items-end w-full">
+          <Typography
+            variant="h1"
+            className="font-bold  lg:text-[5.2rem] text-4xl  text-left lg:leading-[90px] leading-35px"
+          >
+            What You Should Know Before Your Journey Starts
+          </Typography>
 
-      <img
-        className="h-screen absolute top-0 -z-20 w-full"
-        src={
-          configs.length - 2 == stepper.step
-            ? configs[stepper.step+1].image
-            : configs[stepper.step].image
-        }
-      />
-
-      <div className="px-[10%]">
-        <Typography
-          className="my-16 text-center font-semibold text-primary-main"
-          variant="h4"
-        >
-          What You Should Know Before Your Journey Starts
-        </Typography>
-        <div className="flex md:flex-row flex-col items-start gap-2 mb-4">
-          {/* <div
-            style={{
-              background: `url('${VisaImage}')`,
-              backgroundSize: "auto",
-              backgroundRepeat: "no-repeat",
-            }}
-            className="w-[800px] min-h-[280px] "
-          > */}
-          <img className="w-[350px] h-full" src={VisaImage} />
-          {/* </div> */}
-          <div className="w-full  ">
-            <Typography variant="h4" className="mb-6 font-bold">
-              What is IELTS
-            </Typography>
+          <div className="lg:w-2/12 min-w-[295px] pb-3 ">
             <Typography className="text-base">
-              The International English Language Testing System (IELTS) is an
-              exam that is been done on a weekly or bi-weekly basis across
-              different countries. Which is designed to help you work, study or
-              migrate to a country where English is the native language. This
-              includes countries such as Australia, Canada, New Zealand, the UK
-              and the USA. This exam tests your ability, fluency and proficiency
-              to listen, read, write and speak in English will be assessed
-              during the test. IELTS is graded on a scale of 1-9.
+              Planning together to achieve your japa dreams. We work wirh you to
+              achieve your dreams of traveling abroad.
             </Typography>
-          </div>
-        </div>
-
-        <Typography variant="h4" className="font-bold">
-          Why IELTS
-        </Typography>
-        <Typography className="text-base">
-          If you intend to live, school or work in an English-speaking country,
-          it is necessary to enroll and write the IELTS exams, especially for
-          immigration purposes. In recent times we have seen the reduction of
-          IELTS exanimation been a major requirement to entering an
-          English-speaking country, especially in the area of schooling prior to
-          the fact that the host or applicant country is an English-speaking
-          country.
-        </Typography>
-        <div>
-          <div className="my-12">
-            <Typography variant="h6" className="font-bold">
-              Requirements Needed
-            </Typography>
-            <Typography>
-              {" "}
-              <Typography className="text-base">
-                To be qualified to write the IELTS examination, you must have a
-                valid passport from your country of residence, or which has at
-                least six months before it expires.
-              </Typography>
-            </Typography>
-          </div>
-          {/* <div className="my-12">
-            <Typography variant="h6">Requirements/Countries</Typography>
-            <Typography>
-              {" "}
-              <Typography>
-                Lorem ipsum dolor sit amet consectetur. Dolor sit odio sit
-                sagittis morbi senectus amet at. Ut in gravida arcu semper.
-                Ultrices amet justo tellus diam sed nunc ipsum pellentesque ut.
-                Cras venenatis elementum proin in ut mi integer est. Facilisi
-                felis mi mattis sed tortor. Id euismod neque id tempor sed
-                maecenas purus mattis. Venenatis senectus ipsum et suspendisse
-                urna sapien vel facilisis tellus. Etiam nulla nisi odio molestie
-                malesuada. Ornare ac est sapien diam nullam commodo aliquet. Dui
-                quis nisl fermentum velit aliquam ultricies id amet. Nisl sed
-                nunc vestibulum maecenas rhoncus sociis non molestie. Est eget
-                in non consequat mi ornare phasellus.
-              </Typography>
-            </Typography>
-          </div> */}
-          <div className="my-12">
-            <Typography variant="h6" className="font-bold">
-              How To Apply
-            </Typography>
-            <Typography>
-              {" "}
-              <Typography className="text-base">
-                To apply for the IELTS examination, you will have to provide the
-                necessary information, book a convenient date and time, attach
-                your passport, and proceed to make payment for the exams.
-              </Typography>
-            </Typography>
-          </div>
-          <div className="flex justify-end my-8">
-            <Link to="/coaching-form">
-              <Button>Book Now</Button>
-            </Link>
+            <Button className="h-12 px-12 text-primary-main bg-white mt-5 font-bold">
+              Book Now
+            </Button>
           </div>
         </div>
       </div>
-      <Footer />
+      <img alt="" src={!issm ? snake : snake2} className=" w-full lg:h-full" />
+
+      <div className="bg-[#FCF9EE] lg:px-[40px] lg:py-[80px] flex flex-col lg:flex-row w-full lg:gap-28 gap-6 items-center p-[6%]">
+        <Typography className="lg:text-[88px] text-[32px] font-bold w-full">
+          What is IELTS
+        </Typography>
+        <Typography className="text-base w-full">
+          The International English Language Testing System (IELTS) is an exam
+          that is been done on a weekly or bi-weekly basis across different
+          countries. Which is designed to help you work, study or migrate to a
+          country where English is the native language. This includes countries
+          such as Australia, Canada, New Zealand, the UK and the USA. This exam
+          tests your ability, fluency and proficiency to listen, read, write and
+          speak in English will be assessed during the test. IELTS is graded on
+          a scale of 1-9.
+        </Typography>
+      </div>
+      <div className="bg-[#FCF9EE] lg:px-[40px] lg:py-[80px] flex flex-col lg:flex-row w-full gap-16 items-center p-[6%]">
+        <img className=" lg:rounded-xl" src={handshake} />
+        <div className="flex flex-col w-full gap-6 items-center">
+          <Typography className="lg:text-6xl 4xl font-bold w-full">
+            Why IELTS
+          </Typography>
+          <Typography className="text-base w-full">
+            If you intend to live, school or work in an English-speaking
+            country, it is necessary to enroll and write the IELTS exams,
+            especially for immigration purposes. In recent times we have seen
+            the reduction of IELTS exanimation been a major requirement to
+            entering an English-speaking country, especially in the area of
+            schooling prior to the fact that the host or applicant country is an
+            English-speaking country.
+          </Typography>
+        </div>
+      </div>
+
+      <div className="bg-[#F7F6F2] lg:px-[40px] lg:py-[80px] grid lg:grid-cols-2 grid-cols-1 w-full items-center lg:gap-28 gap-12 p-[6%]">
+        <div className="bg-[#F1D0C9] px-4 py-8 pr-10 rounded-xl">
+          <Typography className="lg:text-[80px] lg:leading-[80px] text-[36px]  font-bold w-full">
+            REQUIREMENTS
+          </Typography>
+          <Typography className="lg:pr-24">
+            To be qualified to write the IELTS examination, you must have a
+            valid passport from your country of residence, or which has at least
+            six months before it expires.
+          </Typography>
+        </div>
+
+        <div className="bg-[#FFE8D3] px-4 py-8 pr-10 rounded-xl">
+          <Typography className="lg:text-[80px] lg:leading-[80px] text-[36px]  font-bold w-full">
+            How to apply
+          </Typography>
+          <Typography className="lg:pr-24">
+            To apply for the IELTS examination, you will have to provide the
+            necessary information, book a convenient date and time, attach your
+            passport, and proceed to make payment for the exams.
+          </Typography>
+        </div>
+
+        {/* <div className="bg-[#FFE8D3] px-4 py-8 pr-10 rounded-xl">
+          <Typography className="text-[80px] leading-[80px] w-full">Vision</Typography>
+          <Typography className="pr-24">
+          To be a generally accepted Canadian immigration platform to foster success and 
+achieve dreams.
+          </Typography>
+        </div> */}
+      </div>
     </div>
   );
-};
+}
+
 export default Coaching;

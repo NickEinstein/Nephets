@@ -1,20 +1,12 @@
-import logoImg from "assets/imgs/logo.png";
-import clsx from "clsx";
+import { ReactComponent as PayBoxISvg } from "assets/svgs/logo.svg";
 import "./Logo.css";
 
 /**
  *
- * @param {import("react").ComponentPropsWithoutRef<"img">} props
+ * @param {import("react").ComponentPropsWithoutRef<typeof PayBoxISvg>} props
  */
 function Logo(props) {
-  return (
-    <img
-      src={logoImg}
-      alt="logo"
-      {...props}
-      className={clsx("Logo", props.className)}
-    />
-  );
+  return <PayBoxISvg {...props} />;
 }
 
 export default Logo;

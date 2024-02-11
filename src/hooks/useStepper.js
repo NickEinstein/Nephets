@@ -1,83 +1,58 @@
-import { useCallback, useState } from "react";
+import { useCallback, useReducer } from "react";
 import useDataRef from "./useDataRef";
 
 /**
  *
- * @param {StepperHookOptions} options
- * @returns
+ * @param {State} state
+ * @returns {State}
  */
-function useStepper(options = {}) {
-  const minStep = options.minStep || 0;
-  const maxStep = options.maxStep;
-  const initialStep =
-    parseInt(options?.initialStep) >= minStep ? options?.initialStep : minStep;
-  const initialHistory =
-    options?.initialHistory ||
-    (parseInt(options.step) >= minStep
-      ? [parseInt(options.step)]
-      : [initialStep]);
+function reducer(state, { type, payload }) {
+  switch (type) {
+    case "NEXT_STEP": {
+      const step = parseInt(payload) ? parseInt(payload) : state.step + 1;
+      return { ...state, step, history: [...state.history, step] };
+    }
+    case "PREV_STEP": {
+      const history = [...state.history];
+      history.pop();
+      const step = history[history.length - 1];
+      return { ...state, step, history };
+    }
+    case "RESET": {
+      const step = parseInt(payload.step)
+        ? parseInt(payload.step)
+        : payload.initialStep;
+      return { ...state, step, history: [step] };
+    }
+    default:
+      return state;
+  }
+}
 
-  const [_step, _onStepChange] = useState(initialStep);
-  const [_history, _onHistoryChange] = useState(initialHistory);
-
-  const {
-    step = _step,
-    history = _history,
-    onStepChange = _onStepChange,
-    onHistoryChange = _onHistoryChange,
-  } = options;
-
-  const dataRef = useDataRef({
-    initialStep,
-    initialHistory,
-    minStep,
-    maxStep,
-    step,
-    history,
-    onStepChange,
-    onHistoryChange,
+function useStep(initialStep = 0) {
+  const [{ step, history }, dispatch] = useReducer(reducer, {
+    step: initialStep,
+    history: [initialStep],
   });
 
-  const canPrevStep = useCallback(() => {
-    return dataRef.current.step > dataRef.current.minStep;
-  }, [dataRef]);
-
-  const canNextStep = useCallback(() => {
-    return dataRef.current.step < dataRef.current.maxStep;
-  }, [dataRef]);
+  const dataRef = useDataRef({ initialStep });
 
   const nextStep = useCallback(
-    (step = parseInt(dataRef.current.step) + 1) => {
-      const newStep = parseInt(step);
-      dataRef.current.onStepChange(newStep);
-      dataRef.current.onHistoryChange([...dataRef.current.history, step]);
-    },
-    [dataRef]
+    (step) => dispatch({ type: "NEXT_STEP", payload: step }),
+    []
   );
 
   const prevStep = useCallback(
-    (step) => {
-      const history = [...dataRef.current.history];
-      history.pop();
-      if (!history.length) {
-        history.push(
-          parseInt(dataRef.current.step) > 0
-            ? parseInt(dataRef.current.step) - 1
-            : parseInt(dataRef.current.step)
-        );
-      }
-      const newStep = history[history.length - 1];
-      dataRef.current.onStepChange(newStep);
-      dataRef.current.onHistoryChange(history);
-    },
-    [dataRef]
+    (step) => dispatch({ type: "PREV_STEP", payload: step }),
+    []
   );
 
   const reset = useCallback(
-    (step = parseInt(dataRef.current.initialStep)) => {
-      const newStep = parseInt(step);
-      dataRef.current.onStepChange(newStep);
-      dataRef.current.onHistoryChange([newStep]);
+    (step) => {
+      dispatch({
+        type: "RESET",
+        payload: { step, initialStep: dataRef.current.initialStep },
+      });
     },
     [dataRef]
   );
@@ -87,23 +62,15 @@ function useStepper(options = {}) {
     step,
     nextStep,
     prevStep,
-    canNextStep,
-    canPrevStep,
     reset,
   };
 }
 
-export default useStepper;
+export default useStep;
 
 /**
  * @typedef {{
- * minStep: number;
- * maxStep: number;
- * initialStep: number;
  * step: number;
- * onStepChange: (step: number) => void;
- * initialHistory: number[];
- * history: number[];
- * onHistoryChange: (history: number[]) => void;
- * }} StepperHookOptions
+ * history: number[]
+ * }} State
  */

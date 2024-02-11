@@ -1,4 +1,1 @@
-export const StoreQueryTagEnum = {
-  USER: "USER",
-  PROJECT: "PROJECT",
-};
+export const StoreQueryTagEnum = {};

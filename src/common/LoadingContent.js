@@ -21,7 +21,7 @@ function LoadingContent(props) {
     loadingContent,
     errorContent,
     className,
-    // ...rest
+    ...rest
   } = props;
 
   const dataRef = useDataRef({ onReload, onMount });
@@ -43,7 +43,7 @@ function LoadingContent(props) {
   const defaultErrorContent = <ErrorContent onTryAgain={() => onReload?.()} />;
 
   return (
-    <div className={clsx("LoadingContent", className)}>
+    <div className={clsx("LoadingContent", className)} {...rest}>
       {error ? (
         <>
           {errorContent

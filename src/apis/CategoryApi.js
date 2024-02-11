@@ -1,45 +1,57 @@
 import { SoftwrkApi } from "configs/StoreQueryConfig";
 
-const BASE_URL = "/api/v1/categories";
+const BASE_URL = '/category'
 
 export const CategoryApi = SoftwrkApi.injectEndpoints({
   endpoints: (builder) => ({
-    getCategoriesByLevel: builder.query({
+    // receiveStock: builder.mutation({
+    //   query: (config) => ({
+    //     url: `${BASE_URL}/Receive-Stock`,
+    //     method: "POST",
+    //     ...config,
+    //   }),
+    // }),
+    // receiveStock: builder.mutation({
+    //   query: (config) => ({
+    //     url: `${BASE_URL}/receive-stock`,
+    //     method: "POST",
+    //     ...config,
+    //   }),
+    // }),
+    // receiveStomaterialReturnck: builder.mutation({
+    //   query: (config) => ({
+    //     url: `${BASE_URL}/Material-Return`,
+    //     method: "POST",
+    //     ...config,
+    //   }),
+    // }),
+
+    getCategory: builder.query({
       query: (arg) => {
-        const { level } = arg;
+        const { userType } = arg;
         return {
           url: `${BASE_URL}`,
           method: "GET",
-          params: { level },
+          // params: { userType },
         };
       },
     }),
+
     
-    getCategories: builder.query({
-      query: (config) => {
+
+    getStats: builder.query({
+      query: (arg) => {
+        // const { userType } = arg;
         return {
-          url: `${BASE_URL}`,
-          ...config,
-        };
-      },
-    }),
-    getCategory: builder.query({
-      query: ({ path, ...config }) => {
-        return {
-          url: `${BASE_URL}/${path.id}`,
-          ...config,
-        };
-      },
-    }),
-    getCategoryParents: builder.query({
-      query: ({ path, ...config }) => {
-        return {
-          url: `${BASE_URL}/${path.id}/hierarchy/parents`,
-          ...config,
+          url: `${BASE_URL}/super-admin/userStatsChart`,
+          method: "GET",
+          // params: { userType },
         };
       },
     }),
   }),
 });
+
+// ;
 
 export default CategoryApi;

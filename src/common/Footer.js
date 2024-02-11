@@ -1,91 +1,43 @@
 import React from "react";
-import {
-  Typography,
-  Container,
-  Toolbar,
-  Tabs,
-  Tab,
-  Collapse,
-  Fade,
-  Paper,
-  Icon,
-  Button,
-} from "@mui/material";
-import {
-  AiFillFacebook,
-  AiOutlineInstagram,
-  AiFillLinkedin,
-  AiFillTwitterSquare,
-  AiTwotoneMail,
-  AiFillPhone,
-} from "react-icons/ai";
+import logo from "images/Nephets Assets/Nehpets Consulting Grey Outline 1.svg";
+import logoTwitter from "images/Nephets Assets/logo-twitter.svg";
+import logoInsta from "images/Nephets Assets/logo-instagram.svg";
+import logoFacebook from "images/Nephets Assets/logo-facebook.svg";
+import logoLinkedIn from "images/Nephets Assets/logo-linkedin.svg";
+import { Avatar } from "antd";
+import { Divider, Typography } from "@mui/material";
 // import ReactDOM from 'react-dom';
 // import { BsYoutube,BsFacebook,BsInstagram, BsApple, BsFillFileEarmarkCodeFill } from 'react-icons/bs';
 // import { AiFillAndroid,AiOutlineCopyright, AiFillUnlock } from 'react-icons/ai';
-import logo from "assets/nehpets/Nehpets logo 1.svg";
 
 const Footer = () => {
   return (
-    <div
-      style={{
-        // backgroundColor: "#370548",
-        // padding: "70px 60px",
-        color: "white",
-      }}
-      className="px-[10%] py-[60px] bg-[#AB0035] flex flex-col md:flex-row md:justify-between gap-16 z-50"
-    >
-      <div className="hidden md:block">
-        <img src={logo} />
-        <Typography className="font-bold">
-          Planning Together to Achieve your dream
-        </Typography>
+    <div className="grid lg:grid-cols-12 grid-cols-1 px-[10%] bg-[#662817] text-white  py-[8%]">
+      <div className="lg:col-span-3 col-span-1 ">
+        <img className="w-32 -ml-6" alt="" src={logo} />
       </div>
-      <ul className="text-base flex flex-col md:justify-start md:items-center gap-5 justify-center items-center">
-        <h2 className="text-3xl md:mb-8">Quick Links</h2>
-
-        <a className="hover:text-primary-main cursor-pointer"> Home</a>
-        <a className="hover:text-primary-main cursor-pointer">Coaching</a>
-        <a className="hover:text-primary-main cursor-pointer">Visa</a>
-        <a className="hover:text-primary-main cursor-pointer">About Us</a>
-      </ul>
-
-      <ul className="text-base flex flex-col md:justify-start md:items-center justify-center items-center gap-3">
-        <h2 className="text-3xl md:mb-8">Contact Us</h2>
-        <li className="flex gap-3 items-center">
-          <AiFillPhone /> +234 (904) 919 5599
-        </li>
-        <li className="flex gap-3 items-center">
-          <AiFillPhone /> +1 (204) 441 - 4828
-        </li>
-        <li className="flex gap-3 items-center">
-          <AiTwotoneMail /> Info@nehpetsconsult.com
-        </li>
-      </ul>
-
-      <ul className="text-base flex flex-col md:justify-start md:items-center justify-center items-center gap-3">
-        <h2 className="text-3xl md:mb-8">Social Media</h2>
-
-        <div className="flex gap-4 ">
-          <a href="https://instagram.com/nehpetsconsult?igshid=ZDdkNTZiNTM=">
-            <AiOutlineInstagram style={{ fontSize: "36px" }} />
-          </a>
-          <a
-            href="https://www.facebook.com/profile.php?id=100090851305102&mibextid=ZbWKwL
-"
-          >
-            <AiFillFacebook style={{ fontSize: "36px" }} />
-          </a>
-          <a href="https://twitter.com/Nehpetsconsult">
-            <AiFillTwitterSquare style={{ fontSize: "36px" }} />
-          </a>
-          <a
-            href="https://www.linkedin.com/company/nehpets-consult/
-"
-          >
-            <AiFillLinkedin style={{ fontSize: "36px" }} />
-          </a>
+      <div className="lg:col-span-9 col-span-1 grid lg:grid-cols-4 grid-cols-1 justify-end mt-8 gap-4 lg:mt-0">
+        <div className="col-span-2 hidden lg:block"></div>
+        <div className="flex flex-col gap-8 col-span-1 ">
+            <Divider className="text-white -mb-5 lg:mb-0 bg-white w-1/4"/>
+          <Typography className="text-base">Home</Typography>
+          <Typography className="text-base">Coaching</Typography>
+          <Typography className="text-base">Visa</Typography>
+          <Typography className="text-base">About Us</Typography>
         </div>
-      </ul>
+        <div className="flex flex-col gap-8 col-span-1 mt-6 lg:mt-0">
+            <Divider className="text-white -mb-5 lg:mb-0 bg-white w-3/4"/>
+          <Typography className="text-base">+234 (904) 919 5599</Typography>
+          <Typography className="text-base">+1 (204) 441 - 4828</Typography>
+          <Typography className="text-base">Info@Nehpets.consults</Typography>
+          <div className="flex w-3/4 justify-between items-center">
+            <img className="w-6" src={logoTwitter} />
+            <img className="w-6" src={logoInsta} />
+            <img className="w-6" src={logoFacebook} />
+            <img className="w-6" src={logoLinkedIn} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
